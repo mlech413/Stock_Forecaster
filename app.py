@@ -12,6 +12,7 @@ import numpy as np
 import pickle
 
 app = Flask(__name__)
+# port = int(os.getenv('PORT'))
 
 # Load the model
 model = pickle.load(open('./model.pkl','rb'))
@@ -40,7 +41,7 @@ def home():
     # return render_template("index.html", model_output=model_output, vix_close=vix_close)
 
 
-@app.route('/predict',methods=['POST'])
+@app.route('/predict',methods=['GET', 'POST'])
 def predict():
     # Get the data from the POST request.
     if request.method == "POST":
