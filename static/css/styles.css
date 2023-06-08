@@ -3,21 +3,59 @@
     grid-template-columns: column;
     align-content: center;
     justify-content: center;
-    font-family: monospace;
+    font-family: Arial;
 
 }
 
-.index_value {
+.grid-container-3-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    justify-items: center;
+}
+
+.grid-container-2-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    justify-items: center;
+}
+
+.grid-child {
+    align-content: center;
+    justify-content: center;
+    font-family: Arial;
+
+}
+
+.level-1-br {
+    background: linear-gradient(104.74deg,green 0%, blue 60%, red 100%);
+}
+.level-2-br {
+    background: linear-gradient(104.74deg,green 0%, blue 50%, red 100%);
+}
+.level-3-br {
+    background: linear-gradient(104.74deg,green 0%, blue 30%, red 100%);
+}
+.level-4-br {
+    background: linear-gradient(104.74deg,blue 0%, red 100%);
+}
+.no-br {
+    background: none;
+}
+
+
+.user_entered_index_value {
     width: 95%;
     margin:0 auto;
     height: 50px;
     margin: 15px;
     border:none;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 label {
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .button {
@@ -30,7 +68,8 @@ label {
     display: inline-block;
     justify-self: center;
     white-space: nowrap;
-    background: linear-gradient(104.74deg,green 0%, rgb(65, 150, 4) 100%);
+    /* background: linear-gradient(104.74deg,green 0%, blue 100%); */
+    /* background: linear-gradient(104.74deg,green 0%, rgb(65, 150, 4) 100%); */
     border-radius: 30px;
     border-width: initial;
     border-style: none;
@@ -40,6 +79,9 @@ label {
     outline: none;
     width: 100%;
     transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.2) 0s;
+    text-align: center;
+    -webkit-animation: action 1s infinite  alternate;
+    animation: action 1s infinite  alternate;
 }
 .button:hover {
     opacity:0.5;
@@ -54,11 +96,12 @@ p {
 .fieldset {
     border-radius: 30px;
     padding: 10px;
-    margin: 0px;
-    -webkit-animation: action 1s infinite  alternate;
-    animation: action 1s infinite  alternate;
+    margin: 10px;
+    /* -webkit-animation: action 1s infinite  alternate;
+    animation: action 1s infinite  alternate; */
     transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.2) 0s;
-    background-color:green;
+    /* background: linear-gradient(104.74deg,red 0%, blue 100%); */
+    /* background-color:green; */
     color: white;
     text-align: center;
     font-weight: 600;

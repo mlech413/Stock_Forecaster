@@ -1,4 +1,4 @@
-# Create API of ML model using flask
+# API of ML model using flask
 
 '''
 This code takes the JSON data while POST request an performs the prediction using loaded model and returns
@@ -19,10 +19,11 @@ model = pickle.load(open('./model.pkl','rb'))
 @app.route('/')
 def home():
     # symbol = request.args.get('symbol', default="^VIX")
-
+    user_entered_index_value = ""
     # Get the VIX current value
     quote = yf.Ticker('^VIX')
     vix_info = quote.info
+    vix_close = vix_info['previousClose']
     quote = yf.Ticker('%5EGSPC')
     sp500_info = quote.info
     print("VIX previous close: ", vix_info['previousClose'])
@@ -31,27 +32,70 @@ def home():
     print("S&P500 previous close: ", sp500_info['previousClose'])
     print("S&P500 52-week high ", sp500_info['fiftyTwoWeekHigh'])
     print("S&P500 52-week low: ", sp500_info['fiftyTwoWeekLow'])
-    return render_template("index.html", vix_info=vix_info, sp500_info=sp500_info)
+    # Make a prediction using the model
+    prediction = model.predict([[vix_info['previousClose']]])
+    # Multiple by 100, round, convert to string, remove leading & trailing [] array brackets, add % sign
+    prediction_based_on_last_close = str(np.round(prediction[0]*100, 2))[1:][:-1]+"%"
+    return render_template("index.html", prediction_based_on_last_close=prediction_based_on_last_close, vix_close=vix_close, user_entered_index_value=user_entered_index_value)
+    # return render_template("index.html", model_output=model_output, vix_close=vix_close)
 
 
 @app.route('/predict',methods=['POST'])
 def predict():
+    # # Get the data from the POST request.
+    # if request.method == "POST":
+    #     quote = yf.Ticker('^VIX')
+    #     vix_info = quote.info
+    #     vix_close = vix_info['previousClose']
+    #     quote = yf.Ticker('%5EGSPC')
+    #     sp500_info = quote.info
+    #     print("VIX previous close: ", quote.info['previousClose'])
+    #     #data = request.get_json(force=True)
+    #     # Print out user-entered value
+    #     print("User entered index_value: ", request.form['index_value'])
+    #     data = float(request.form['index_value'])
+    #     # Print out data value from model
+    #     print("Model data: ", model.predict([[data]]))
+    #     # Make a prediction using the model
+    #     # prediction = model.predict([[data]])
+    #     # Multiple by 100, round, convert to string, remove leading & trailing [] array brackets, add % sign
+    #     # output = str(np.round(prediction[0]*100, 1))[1:][:-1]+"%"
+    #     prediction = str(np.round(model.predict([[data]])[0]*100, 1))[1:][:-1]+"%"
+    #     # output = str(np.round(model.predict([[data]])[0]*100, 1))[1:][:-1]+"%"
+    #     # Return the value
+    #     # return render_template("results.html", output=output, index_value=data, quote=quote.info)
+        
+        
     # Get the data from the POST request.
     if request.method == "POST":
+        # Get the VIX current value
         quote = yf.Ticker('^VIX')
-        print("VIX previous close: ", quote.info['previousClose'])
-        #data = request.get_json(force=True)
+        vix_info = quote.info
+        vix_close = vix_info['previousClose']
+        quote = yf.Ticker('%5EGSPC')
+        sp500_info = quote.info
+        print("VIX previous close: ", vix_info['previousClose'])
+        print("VIX 52-week high ", vix_info['fiftyTwoWeekHigh'])
+        print("VIX 52-week low: ", vix_info['fiftyTwoWeekLow'])
+        print("S&P500 previous close: ", sp500_info['previousClose'])
+        print("S&P500 52-week high ", sp500_info['fiftyTwoWeekHigh'])
+        print("S&P500 52-week low: ", sp500_info['fiftyTwoWeekLow'])
         # Print out user-entered value
         print("User entered index_value: ", request.form['index_value'])
         data = float(request.form['index_value'])
         # Print out data value from model
         print("Model data: ", model.predict([[data]]))
         # Make a prediction using the model
+        prediction = model.predict([[vix_info['previousClose']]])
+        # Multiple by 100, round, convert to string, remove leading & trailing [] array brackets, add % sign
+        prediction_based_on_last_close = str(np.round(prediction[0]*100, 2))[1:][:-1]+"%"
+        # Make a prediction using the model
         prediction = model.predict([[data]])
         # Multiple by 100, round, convert to string, remove leading & trailing [] array brackets, add % sign
-        output = str(np.round(prediction[0]*100, 1))[1:][:-1]+"%"
-        # Return the value
-        return render_template("results.html", output=output, index_value=data, quote=quote.info)
+        user_model_output = str(np.round(prediction[0]*100, 2))[1:][:-1]+"%"
+        # return render_template("index.html", model_output=model_output, vix_close=vix_close)
+        return render_template("index.html", vix_close=vix_close, prediction_based_on_last_close=prediction_based_on_last_close, user_entered_index_value=data, user_model_output=user_model_output )
+
     
 
 @app.route("/quote")
