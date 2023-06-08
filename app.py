@@ -1,0 +1,84 @@
+# Create API of ML model using flask
+
+'''
+This code takes the JSON data while POST request an performs the prediction using loaded model and returns
+the results in JSON format.
+'''
+
+# Import libraries
+from flask import Flask, request, render_template, jsonify
+import yfinance as yf
+import numpy as np
+import pickle
+
+app = Flask(__name__)
+
+# Load the model
+model = pickle.load(open('./model.pkl','rb'))
+
+@app.route('/')
+def home():
+    # symbol = request.args.get('symbol', default="^VIX")
+
+    # Get the VIX current value
+    quote = yf.Ticker('^VIX')
+    vix_info = quote.info
+    quote = yf.Ticker('%5EGSPC')
+    sp500_info = quote.info
+    print("VIX previous close: ", vix_info['previousClose'])
+    print("VIX 52-week high ", vix_info['fiftyTwoWeekHigh'])
+    print("VIX 52-week low: ", vix_info['fiftyTwoWeekLow'])
+    print("S&P500 previous close: ", sp500_info['previousClose'])
+    print("S&P500 52-week high ", sp500_info['fiftyTwoWeekHigh'])
+    print("S&P500 52-week low: ", sp500_info['fiftyTwoWeekLow'])
+    return render_template("index.html", vix_info=vix_info, sp500_info=sp500_info)
+
+
+@app.route('/predict',methods=['POST'])
+def predict():
+    # Get the data from the POST request.
+    if request.method == "POST":
+        quote = yf.Ticker('^VIX')
+        print("VIX previous close: ", quote.info['previousClose'])
+        #data = request.get_json(force=True)
+        # Print out user-entered value
+        print("User entered index_value: ", request.form['index_value'])
+        data = float(request.form['index_value'])
+        # Print out data value from model
+        print("Model data: ", model.predict([[data]]))
+        # Make a prediction using the model
+        prediction = model.predict([[data]])
+        # Multiple by 100, round, convert to string, remove leading & trailing [] array brackets, add % sign
+        output = str(np.round(prediction[0]*100, 1))[1:][:-1]+"%"
+        # Return the value
+        return render_template("results.html", output=output, index_value=data, quote=quote.info)
+    
+
+@app.route("/quote")
+def display_quote():
+
+    symbol = request.args.get('symbol', default="^VIX")
+
+    quote = yf.Ticker(symbol)
+    print(quote.info['regularMarketPreviousClose'])
+    return quote.info
+
+
+@app.route("/history")
+def display_history():
+
+    symbol = request.args.get('symbol', default="^VIX")
+    period = request.args.get('period', default="1y")
+    interval = request.args.get('interval', default="1d")        
+    quote = yf.Ticker(symbol)   
+    hist = quote.history(period=period, interval=interval)["Close"]
+    # hist = quote.history(period=period, interval=interval)
+    for i in hist:
+        print(i)
+    # datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
+    data = hist.to_json()
+    return data
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
