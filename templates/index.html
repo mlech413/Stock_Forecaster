@@ -33,11 +33,11 @@
             <div class="grid-child no-br">
                 <form action="/predict" method="POST" class="form">
                     <div class="fieldset level-1-br">
-                        <label>With a current VIX closing value of <span style="color:yellow">{{vix_close}}</span>, the projected 1-year return of the S&P 500 index is <span style="color:yellow">{{prediction_based_on_last_close}}</span>.</label>
+                        <label>With the most recent VIX closing value being <span style="color:yellow">{{vix_close}}</span>, the projected 1-year return of the S&P 500 index is <span style="color:yellow">{{prediction_based_on_last_close}}</span>.</label>
                     </div>
                     <div class="fieldset level-2-br">
-                        <label>To view another VIX scenario, enter a closing value for the VIX (volitility index):</label>
-                        <input type="text" class="user_entered_index_value" name="index_value"/>
+                        <label>To view other VIX scenarios, enter a closing value for the VIX (volitility index):</label>
+                        <input type="number" class="user_entered_index_value" name="index_value" min="0" max="100"/>
                     </div>
                     <input type="submit" class="button level-3-br" value="Predict the S&P 500">
                     {% if user_entered_index_value != "" %}
