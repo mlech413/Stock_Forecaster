@@ -17,7 +17,7 @@ app = Flask(__name__)
 # Load the model
 model = pickle.load(open('./model.pkl','rb'))
 
-@app.route('/')
+@app.route('/',methods=['GET'])
 def home():
     # symbol = request.args.get('symbol', default="^VIX")
     user_entered_index_value = ""
@@ -75,30 +75,30 @@ def predict():
 
     
 
-@app.route("/quote")
-def display_quote():
+# @app.route("/quote")
+# def display_quote():
 
-    symbol = request.args.get('symbol', default="^VIX")
+#     symbol = request.args.get('symbol', default="^VIX")
 
-    quote = yf.Ticker(symbol)
-    print(quote.info['regularMarketPreviousClose'])
-    return quote.info
+#     quote = yf.Ticker(symbol)
+#     print(quote.info['regularMarketPreviousClose'])
+#     return quote.info
 
 
-@app.route("/history")
-def display_history():
+# @app.route("/history")
+# def display_history():
 
-    symbol = request.args.get('symbol', default="^VIX")
-    period = request.args.get('period', default="1y")
-    interval = request.args.get('interval', default="1d")        
-    quote = yf.Ticker(symbol)   
-    hist = quote.history(period=period, interval=interval)["Close"]
-    # hist = quote.history(period=period, interval=interval)
-    for i in hist:
-        print(i)
-    # datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
-    data = hist.to_json()
-    return data
+#     symbol = request.args.get('symbol', default="^VIX")
+#     period = request.args.get('period', default="1y")
+#     interval = request.args.get('interval', default="1d")        
+#     quote = yf.Ticker(symbol)   
+#     hist = quote.history(period=period, interval=interval)["Close"]
+#     # hist = quote.history(period=period, interval=interval)
+#     for i in hist:
+#         print(i)
+#     # datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
+#     data = hist.to_json()
+#     return data
 
 
 if __name__ == '__main__':
