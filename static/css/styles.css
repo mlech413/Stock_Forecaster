@@ -1,4 +1,5 @@
 .container {
+    width: 100vw;
     display: grid;
     grid-template-columns: column;
     align-content: center;
@@ -8,6 +9,7 @@
 }
 
 .grid-container-3-cols {
+    width: 100vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
@@ -44,6 +46,9 @@
     background: none;
 }
 
+.left-side {
+    object-fit: cover;
+}
 
 .user_entered_index_value {
     width: 95%;
@@ -68,8 +73,6 @@ label {
     display: inline-block;
     justify-self: center;
     white-space: nowrap;
-    /* background: linear-gradient(104.74deg,green 0%, blue 100%); */
-    /* background: linear-gradient(104.74deg,green 0%, rgb(65, 150, 4) 100%); */
     border-radius: 30px;
     border-width: initial;
     border-style: none;
@@ -97,11 +100,7 @@ p {
     border-radius: 30px;
     padding: 10px;
     margin: 10px;
-    /* -webkit-animation: action 1s infinite  alternate;
-    animation: action 1s infinite  alternate; */
     transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.2) 0s;
-    /* background: linear-gradient(104.74deg,red 0%, blue 100%); */
-    /* background-color:green; */
     color: white;
     text-align: center;
     font-weight: 600;
