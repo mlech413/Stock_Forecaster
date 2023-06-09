@@ -15,7 +15,7 @@ app = Flask(__name__)
 # port = int(os.getenv('PORT'))
 
 # Load the model
-# model = pickle.load(open('./model.pkl','rb'))
+model = pickle.load(open('./model.pkl','rb'))
 
 @app.route('/',methods=['GET'])
 def home():
