@@ -8,15 +8,22 @@
 
 }
 
-.grid-container-3-cols {
-    width: 100vw;
+.grid-container-outer-2-cols {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
     justify-items: center;
 }
 
-.grid-container-2-cols {
+.grid-container-3-cols {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr;
+    grid-gap: 20px;
+    justify-items: center;
+}
+
+.grid-container-inner-2-cols {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
@@ -30,6 +37,84 @@
 
 }
 
+
+
+
+/* Style the header */
+.center {
+    grid-area: header;
+    background-color: #f1f1f1;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+  }
+
+  
+/* The grid container */
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+      'left left middle middle middle right right right' 
+      /* 'center center center center center center center center' 
+      'footer footer footer footer footer footer footer footer'; */
+    /* grid-column-gap: 10px; - if you want gap between the columns */
+  } 
+
+.left{
+    background-color: rgb(129, 163, 238);
+}
+.middle{
+    background-color: none;
+}
+.right {
+    background-color: none;
+  padding: 10px;
+  /* height: 300px; Should be removed. Only for demonstration */
+}
+/* Style the left column */
+.left {
+    grid-area: left;
+  }
+  
+  /* Style the middle column */
+  .middle {
+    grid-area: middle;
+  }
+  
+  /* Style the right column */
+  .right {
+    grid-area: right;
+  }
+  
+  /* Style the footer */
+  .footer {
+    grid-area: footer;
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+  }
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+    .grid-container  {
+      grid-template-areas: 
+        'left left left left left left left left' 
+        'middle middle middle middle middle middle middle middle' 
+        'right right right right right right right right' 
+        /* 'center center center center center center center center' 
+        'footer footer footer footer footer footer footer footer'; */
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
 .level-1-br {
     background: linear-gradient(104.74deg,green 0%, blue 60%, red 100%);
 }
@@ -42,6 +127,9 @@
 .level-4-br {
     background: linear-gradient(104.74deg,blue 0%, red 100%);
 }
+.lightblue-br {
+    background: rgb(129, 163, 238);
+}
 .no-br {
     background: none;
 }
@@ -49,6 +137,15 @@
 .left-side {
     object-fit: cover;
 }
+
+
+
+
+
+
+
+
+
 
 .user_entered_index_value {
     width: 95%;
@@ -91,7 +188,7 @@ label {
 }
 
 p {
-    color:white;
+    color:black;
     font-size:50px;
     text-align: center;
 }

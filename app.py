@@ -59,7 +59,10 @@ def predict():
         print("S&P500 52-week low: ", sp500_info['fiftyTwoWeekLow'])
         # Print out user-entered value
         print("User entered index_value: ", request.form['index_value'])
-        data = float(request.form['index_value'])
+        if request.form['index_value'] == "":
+            data = 0
+        else:
+            data = float(request.form['index_value'])
         # Print out data value from model
         print("Model data: ", model.predict([[data]]))
         # Make a prediction using the model
