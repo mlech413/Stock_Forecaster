@@ -2,3 +2,7 @@ Flask==2.2.2
 numpy==1.23.5
 yfinance==0.2.20
 gunicorn==20.1.0
+matplotlib==3.7.1
+scipy==1.10.0
+scikit-learn==1.2.2
+scikit-learn-intelex==2021.20211201.114824
