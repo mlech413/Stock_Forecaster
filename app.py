@@ -10,13 +10,12 @@ from flask import Flask, request, render_template, jsonify
 import yfinance as yf
 import numpy as np
 import pickle
-print(f"pickle version: {pickle.format_version}")
 
 app = Flask(__name__)
 # port = int(os.getenv('PORT'))
 
 # Load the model
-# model = pickle.load(open('model.pkl','rb'))
+model = pickle.load(open('model.pkl','rb'))
 
 @app.route('/',methods=['GET'])
 def home():
