@@ -1,7 +1,4 @@
-Flask @ file:///home/ktietz/src/ci/flask_1611932660458/work
-numpy @ file:///C:/b/abs_datssh7cer/croot/numpy_and_numpy_base_1672336199388/work
-numpydoc @ file:///C:/b/abs_cfdd4zxbga/croot/numpydoc_1668085912100/work
-pickleshare @ file:///tmp/build/80754af9/pickleshare_1606932040724/work
-work
+Flask==2.2.2
+numpy==1.23.5
 yahoo-fin==0.8.9.1
 yfinance==0.2.20
