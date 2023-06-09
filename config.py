@@ -1,5 +1,0 @@
-user = 'postgres'
-password = '413mlech'
-host = 'localhost'
-port = '5432'
-db = 'large_companies_db'
