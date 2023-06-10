@@ -1,8 +1,16 @@
+p {
+  color:black;
+  font-size:16px;
+  margin-left:10px;
+  margin-right:10px;
+  font-family: Helvetica;
+}
 /* The grid container */
 .grid-container {
     display: grid;
+    justify-items: center;
     grid-template-areas: 
-      'left left middle middle middle right right right';
+      'left middle right';
     grid-column-gap: 10px; /* gap between the columns */
   } 
 .left{
@@ -13,8 +21,7 @@
   }
 .right {
     background-color: none;
-  padding: 10px;
-  /* height: 300px; Should be removed. Only for demonstration */
+    padding: 10px;
   }
 /* Style the left column */
 .left {
@@ -42,29 +49,65 @@
 @media (max-width: 600px) {
     .grid-container  {
       grid-template-areas: 
-        'left left left left left left left left' 
-        'middle middle middle middle middle middle middle middle' 
-        'right right right right right right right right' 
-    }
+        'left left left' 
+        'middle middle middle' 
+        'right right right' 
+      }
   }
+
+.grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3% 3% 12% 8%;
+  }
+
+  .text-box-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0% 3% 5% 8%;
+  }
+
+  .top-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkslategray;
+    font-family: Helvetica;
+  }
+
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkslategray;
+    color: white;
+    font-size:16px;
+    font-family: Helvetica;
+  }
+
+/* Color schemes */
 .level-1-br {
     background: linear-gradient(104.74deg,green 0%, blue 60%, red 100%);
-}
+  }
 .level-2-br {
     background: linear-gradient(104.74deg,green 0%, blue 50%, red 100%);
-}
+  }
 .level-3-br {
     background: linear-gradient(104.74deg,green 0%, blue 30%, red 100%);
-}
+  }
 .level-4-br {
     background: linear-gradient(104.74deg,blue 0%, red 100%);
-}
+  }
 .lightblue-br {
     background: rgb(129, 163, 238);
-}
+  }
 .no-br {
     background: none;
-}
+  }
+
+  /* button value to run model */
 .user_entered_index_value {
     width: 95%;
     margin:0 auto;
@@ -76,6 +119,7 @@
 label {
     font-size: 22px;
 }
+/* moving button */
 .button {
     margin-top: 10px;
     font-size: 24px;
@@ -98,17 +142,18 @@ label {
     text-align: center;
     -webkit-animation: action 1s infinite  alternate;
     animation: action 1s infinite  alternate;
-}
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.11),
+                0px 2px 2px 0px rgba(0,0,0,0.11),
+                -3px 4px 4px 0px rgba(0,0,0,0.11),
+                0px 3px 8px 0px rgba(0,0,0,0.11),
+                -9px 9px 16px 0px rgba(0,0,0,0.11),
+                -28px 13px 32px 0px rgba(0,0,0,0.11);
+  }
 .button:hover {
     opacity:0.5;
 }
-
-p {
-    color:black;
-    font-size:50px;
-    text-align: center;
-}
-
+/* text boxes for model input */
 .fieldset {
     border-radius: 30px;
     padding: 10px;
@@ -116,7 +161,14 @@ p {
     transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.2) 0s;
     color: white;
     text-align: center;
+    font-family: Helvetica;
     font-weight: 600;
+    box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.11),
+                0px 2px 2px 0px rgba(0,0,0,0.11),
+                -3px 4px 4px 0px rgba(0,0,0,0.11),
+                0px 3px 8px 0px rgba(0,0,0,0.11),
+                -9px 9px 16px 0px rgba(0,0,0,0.11),
+                -28px 13px 32px 0px rgba(0,0,0,0.11);
 }
 @-webkit-keyframes action {
     0% { transform: translateY(0); }
@@ -131,17 +183,22 @@ p {
     height: 500px;
     
 }
-/* .vertical-center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-.container {
-    height: 200px;
-    position: relative;
-    border: 3px solid green;
-} */
 
+.align-center {
+  display: flex;
+  align-items: center;
+}
+/* shadow text boxes */
+.element {
+  width: 90%;
+  background-color: rgba(255, 255, 255, 1);
+  
+  color: #000;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.11),
+              0px 2px 2px 0px rgba(0,0,0,0.11),
+              -3px 4px 4px 0px rgba(0,0,0,0.11),
+              0px 3px 8px 0px rgba(0,0,0,0.11),
+              -9px 9px 16px 0px rgba(0,0,0,0.11),
+              -28px 13px 32px 0px rgba(0,0,0,0.11);
+}

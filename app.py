@@ -25,8 +25,9 @@ def home():
     quote = yf.Ticker('^VIX')
     vix_info = quote.info
     vix_close = vix_info['previousClose']
-    quote = yf.Ticker('%5EGSPC')
+    quote = yf.Ticker('^GSPC')
     sp500_info = quote.info
+    print(sp500_info)
     print("VIX previous close: ", vix_info['previousClose'])
     print("VIX 52-week high ", vix_info['fiftyTwoWeekHigh'])
     print("VIX 52-week low: ", vix_info['fiftyTwoWeekLow'])
@@ -37,8 +38,7 @@ def home():
     prediction = model.predict([[vix_info['previousClose']]])
     # Multiple by 100, round, convert to string, remove leading & trailing [] array brackets, add % sign
     prediction_based_on_last_close = str(np.round(prediction[0]*100, 2))[1:][:-1]+"%"
-    return render_template("index.html", prediction_based_on_last_close=prediction_based_on_last_close, vix_close=vix_close, user_entered_index_value=user_entered_index_value)
-    # return render_template("index.html", model_output=model_output, vix_close=vix_close)
+    return render_template("index.html", prediction_based_on_last_close=prediction_based_on_last_close, vix_close=vix_close, user_entered_index_value=user_entered_index_value, vix_info=vix_info, sp500_info=sp500_info)
 
 
 @app.route('/predict',methods=['GET', 'POST'])
@@ -49,7 +49,7 @@ def predict():
         quote = yf.Ticker('^VIX')
         vix_info = quote.info
         vix_close = vix_info['previousClose']
-        quote = yf.Ticker('%5EGSPC')
+        quote = yf.Ticker('^GSPC')
         sp500_info = quote.info
         print("VIX previous close: ", vix_info['previousClose'])
         print("VIX 52-week high ", vix_info['fiftyTwoWeekHigh'])
@@ -74,7 +74,7 @@ def predict():
         # Multiple by 100, round, convert to string, remove leading & trailing [] array brackets, add % sign
         user_model_output = str(np.round(prediction[0]*100, 2))[1:][:-1]+"%"
         # return render_template("index.html", model_output=model_output, vix_close=vix_close)
-        return render_template("index.html", vix_close=vix_close, prediction_based_on_last_close=prediction_based_on_last_close, user_entered_index_value=data, user_model_output=user_model_output )
+        return render_template("index.html", vix_close=vix_close, prediction_based_on_last_close=prediction_based_on_last_close, user_entered_index_value=data, user_model_output=user_model_output, vix_info=vix_info, sp500_info=sp500_info )
 
     
 
