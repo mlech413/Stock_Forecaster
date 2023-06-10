@@ -5,50 +5,51 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     </head>
     <body>
+    <header>
+    </header>
 
-
-
-<h2>CSS Template using Grid</h2>
-In this example, we have created a header, three unequal columns and a footer. 
-    On smaller screens, the columns will stack on top of each other.
-<Resize the browser window to see the responsive effect.
-<<strong>Note:</strong> The Grid Layout Module is not supported in Internet Explorer or Edge 15 eand earlier versions.
-
-<div class="grid-container">
-
-  
-  <div class="left">Menu<br/>Menu</div>
-  <div class="middle">
-    <div class="grid-child no-br">
-        <img src="static/images/vix_sp500_regressions.jpg" alt=" VIX as an Indicator for Future S&P 500 Returns"/>
+    <div class="grid-container">
+    
+        <div class="left">
+            <!-- <div class="vertical-center"> -->
+                <br/><br/>
+                <button type="button" style="display:block; margin: 0 auto;">Click Me!</button>
+                <br/><br/>
+                <button type="button" style="display:block; margin: 0 auto;">Click Me!</button>
+                <br/><br/>
+            <!-- </div>         -->
+        </div>
+        <div class="middle">
+            <div class="grid-child no-br">
+                <img src="static/images/vix_sp500_regressions.jpg" alt=" VIX as an Indicator for Future S&P 500 Returns"/>
+            </div>
+        </div>  
+        <div class="right">
+            <div class="grid-child no-br">
+                <form action="/predict" method="POST" class="form">
+                    <div class="fieldset level-1-br">
+                        <label>Based on the most recent VIX value of <span style="color:yellow">{{vix_close}}</span>, the model projects a 1-year return of <span style="color:yellow">{{prediction_based_on_last_close}}</span> for the S&P 500 index.</label>
+                    </div>
+                    <div class="fieldset level-2-br">
+                        <label>To view other VIX scenarios, enter a value for the VIX (volitility index):</label>
+                        <input type="number" class="user_entered_index_value" name="index_value" min="1" max="100"/>
+                    </div>
+                    <input type="submit" class="button level-3-br" value="Predict the S&P 500">
+                    {% if user_entered_index_value != "" %}
+                    <div class="fieldset level-4-br">
+                        <label>For a VIX closing value of <span style="color:yellow">{{user_entered_index_value}}</span>, the model projects a 1-year return of <span style="color:yellow">{{user_model_output}}</span> for the S&P 500 index.</label>
+                    </div>
+                    {% endif %}
+                </form>
+            </div>  
+        </div>
+    <!-- <div class="footer">
+        <p>Center</p>
     </div>
-  </div>  
-  <div class="right">
-    <div class="grid-child no-br">
-        <form action="/predict" method="POST" class="form">
-            <div class="fieldset level-1-br">
-                <label>The most recent VIX closing value is <span style="color:yellow">{{vix_close}}</span>, therefore, the projected 1-year return of the S&P 500 index is <span style="color:yellow">{{prediction_based_on_last_close}}</span>.</label>
-            </div>
-            <div class="fieldset level-2-br">
-                <label>To view other VIX scenarios, enter a closing value for the VIX (volitility index):</label>
-                <input type="number" class="user_entered_index_value" name="index_value" min="1" max="100"/>
-            </div>
-            <input type="submit" class="button level-3-br" value="Predict the S&P 500">
-            {% if user_entered_index_value != "" %}
-            <div class="fieldset level-4-br">
-                <label>For a VIX closing value of <span style="color:yellow">{{user_entered_index_value}}</span>, the projected 1-year return of the S&P 500 index is <span style="color:yellow">{{user_model_output}}</span>.</label>
-            </div>
-            {% endif %}
-        </form>
-    </div>  
-  </div>
-  <!-- <div class="footer">
-    <p>Center</p>
-  </div>
-  <div class="footer">
-    <p>Footer</p>
-  </div> -->
-</div>
+    <div class="footer">
+        <p>Footer</p>
+    </div> -->
+    </div>
 
 
 
@@ -59,12 +60,12 @@ In this example, we have created a header, three unequal columns and a footer.
 	    </div>
 	</header>
 
-    <div class="grid-container-outer-2-cols">
+    <!-- <div class="grid-container-outer-2-cols">
         <div class="grid-child lightblue-br">
             <label>text</label>
-        </div>
+        </div> -->
 
-        <div class="grid-container-inner-2-cols">
+        <!-- <div class="grid-container-inner-2-cols">
             <div class="grid-child no-br">
                 <img src="static/images/vix_sp500_regressions.jpg" alt=" VIX as an Indicator for Future S&P 500 Returns"/>
             </div>   
@@ -85,22 +86,12 @@ In this example, we have created a header, three unequal columns and a footer.
                     {% endif %}
                 </form>
             </div>  
-    
         </div>
-    </div>
-        <div class="grid-container-2-cols">
-
-            <!-- <div class="grid-child lightblue-br">
-                <label>text</label>
-            </div>
-
-            <div class="grid-child no-br">
-                <img src="static/images/vix_sp500_regressions.jpg" alt=" VIX as an Indicator for Future S&P 500 Returns"/>
-            </div>       
-        </div> -->
+    </div> -->
  
-        <div class='tableauPlaceholder' id='viz1686336721201' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StockWorksheetsheet&#47;HistoryandCorrelation&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StockWorksheetsheet&#47;HistoryandCorrelation' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StockWorksheetsheet&#47;HistoryandCorrelation&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1686336721201');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.minHeight='750px';vizElement.style.maxHeight=(divElement.offsetWidth*1.77)+'px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-        
+        <!-- <div class='tableauPlaceholder' id='viz1686336721201' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StockWorksheetsheet&#47;HistoryandCorrelation&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StockWorksheetsheet&#47;HistoryandCorrelation' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StockWorksheetsheet&#47;HistoryandCorrelation&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1686336721201');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.minHeight='750px';vizElement.style.maxHeight=(divElement.offsetWidth*1.77)+'px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script> -->
+        <div class='tableauPlaceholder' id='viz1686354232446' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Vo&#47;VolitilityIndexVIXHistorysheet&#47;VolitilityIndexVIXHistory&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='VolitilityIndexVIXHistorysheet&#47;VolitilityIndexVIXHistory' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Vo&#47;VolitilityIndexVIXHistorysheet&#47;VolitilityIndexVIXHistory&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1686354232446');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.2)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+        <div class='tableauPlaceholder' id='viz1686354616277' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;CorrelationBetweenCurrentVIXandFutureSP500Returnsheet&#47;CorrelationBetweenCurrentVIXandFutureSP500Return&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='CorrelationBetweenCurrentVIXandFutureSP500Returnsheet&#47;CorrelationBetweenCurrentVIXandFutureSP500Return' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;CorrelationBetweenCurrentVIXandFutureSP500Returnsheet&#47;CorrelationBetweenCurrentVIXandFutureSP500Return&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1686354616277');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.3)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
     </body>
 
 </html>

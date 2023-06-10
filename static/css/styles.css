@@ -1,93 +1,38 @@
-.container {
-    width: 100vw;
-    display: grid;
-    grid-template-columns: column;
-    align-content: center;
-    justify-content: center;
-    font-family: Arial;
-
-}
-
-.grid-container-outer-2-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-    justify-items: center;
-}
-
-.grid-container-3-cols {
-    width: 100vw;
-    display: grid;
-    grid-template-columns: 1fr 3fr 3fr;
-    grid-gap: 20px;
-    justify-items: center;
-}
-
-.grid-container-inner-2-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-    justify-items: center;
-}
-
-.grid-child {
-    align-content: center;
-    justify-content: center;
-    font-family: Arial;
-
-}
-
-
-
-
-/* Style the header */
-.center {
-    grid-area: header;
-    background-color: #f1f1f1;
-    padding: 30px;
-    text-align: center;
-    font-size: 35px;
-  }
-
-  
 /* The grid container */
 .grid-container {
     display: grid;
     grid-template-areas: 
-      'left left middle middle middle right right right' 
-      /* 'center center center center center center center center' 
-      'footer footer footer footer footer footer footer footer'; */
-    /* grid-column-gap: 10px; - if you want gap between the columns */
+      'left left middle middle middle right right right';
+    grid-column-gap: 10px; /* gap between the columns */
   } 
-
 .left{
     background-color: rgb(129, 163, 238);
-}
+  }
 .middle{
     background-color: none;
-}
+  }
 .right {
     background-color: none;
   padding: 10px;
   /* height: 300px; Should be removed. Only for demonstration */
-}
+  }
 /* Style the left column */
 .left {
     grid-area: left;
   }
   
-  /* Style the middle column */
-  .middle {
+/* Style the middle column */
+.middle {
     grid-area: middle;
   }
   
   /* Style the right column */
-  .right {
+.right {
     grid-area: right;
   }
   
   /* Style the footer */
-  .footer {
+.footer {
     grid-area: footer;
     background-color: #f1f1f1;
     padding: 10px;
@@ -100,21 +45,8 @@
         'left left left left left left left left' 
         'middle middle middle middle middle middle middle middle' 
         'right right right right right right right right' 
-        /* 'center center center center center center center center' 
-        'footer footer footer footer footer footer footer footer'; */
     }
   }
-
-
-
-
-
-
-
-
-
-
-
 .level-1-br {
     background: linear-gradient(104.74deg,green 0%, blue 60%, red 100%);
 }
@@ -133,20 +65,6 @@
 .no-br {
     background: none;
 }
-
-.left-side {
-    object-fit: cover;
-}
-
-
-
-
-
-
-
-
-
-
 .user_entered_index_value {
     width: 95%;
     margin:0 auto;
@@ -155,11 +73,9 @@
     border:none;
     font-size: 40px;
 }
-
 label {
     font-size: 22px;
 }
-
 .button {
     margin-top: 10px;
     font-size: 24px;
@@ -201,10 +117,7 @@ p {
     color: white;
     text-align: center;
     font-weight: 600;
-   
-    
 }
-
 @-webkit-keyframes action {
     0% { transform: translateY(0); }
     100% { transform: translateY(-10px); }
@@ -213,14 +126,22 @@ p {
     0% { transform: translateY(0); }
     100% { transform: translateY(-10px); }
 }
-
-
-
-
 .form {
     width: 500px;
     height: 500px;
     
 }
-
+/* .vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.container {
+    height: 200px;
+    position: relative;
+    border: 3px solid green;
+} */
 
