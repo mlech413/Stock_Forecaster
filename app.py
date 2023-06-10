@@ -27,14 +27,7 @@ def home():
     vix_close = vix_info['previousClose']
     quote = yf.Ticker('^GSPC')
     sp500_info = quote.info
-    print(sp500_info)
-    print("VIX previous close: ", vix_info['previousClose'])
-    print("VIX 52-week high ", vix_info['fiftyTwoWeekHigh'])
-    print("VIX 52-week low: ", vix_info['fiftyTwoWeekLow'])
-    print("S&P500 previous close: ", sp500_info['previousClose'])
-    print("S&P500 52-week high ", sp500_info['fiftyTwoWeekHigh'])
-    print("S&P500 52-week low: ", sp500_info['fiftyTwoWeekLow'])
-    # Make a prediction using the model
+    # Make a prediction using the model for the current vix value from the api
     prediction = model.predict([[vix_info['previousClose']]])
     # Multiple by 100, round, convert to string, remove leading & trailing [] array brackets, add % sign
     prediction_based_on_last_close = str(np.round(prediction[0]*100, 2))[1:][:-1]+"%"
@@ -51,25 +44,20 @@ def predict():
         vix_close = vix_info['previousClose']
         quote = yf.Ticker('^GSPC')
         sp500_info = quote.info
-        print("VIX previous close: ", vix_info['previousClose'])
-        print("VIX 52-week high ", vix_info['fiftyTwoWeekHigh'])
-        print("VIX 52-week low: ", vix_info['fiftyTwoWeekLow'])
-        print("S&P500 previous close: ", sp500_info['previousClose'])
-        print("S&P500 52-week high ", sp500_info['fiftyTwoWeekHigh'])
-        print("S&P500 52-week low: ", sp500_info['fiftyTwoWeekLow'])
         # Print out user-entered value
         print("User entered index_value: ", request.form['index_value'])
+        # If user hit the enter button without any value, make it zero so the model doesn't fail
         if request.form['index_value'] == "":
             data = 0
         else:
             data = float(request.form['index_value'])
         # Print out data value from model
         print("Model data: ", model.predict([[data]]))
-        # Make a prediction using the model
+        # Make a prediction using the model for the current vix value from the api
         prediction = model.predict([[vix_info['previousClose']]])
         # Multiple by 100, round, convert to string, remove leading & trailing [] array brackets, add % sign
         prediction_based_on_last_close = str(np.round(prediction[0]*100, 2))[1:][:-1]+"%"
-        # Make a prediction using the model
+        # Make a prediction using the model for the USER ENTERED VALUE
         prediction = model.predict([[data]])
         # Multiple by 100, round, convert to string, remove leading & trailing [] array brackets, add % sign
         user_model_output = str(np.round(prediction[0]*100, 2))[1:][:-1]+"%"
@@ -78,10 +66,8 @@ def predict():
 
 @app.route('/models',methods=['GET', 'POST'])
 def models():
-    # Get the data from the POST request.
-    # if request.method == "POST":
-        print("MODELS")
-        return render_template("models.html")
+    print("MODELS")
+    return render_template("models.html")
 
     
 
