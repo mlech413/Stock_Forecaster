@@ -76,6 +76,13 @@ def predict():
         # return render_template("index.html", model_output=model_output, vix_close=vix_close)
         return render_template("index.html", vix_close=vix_close, prediction_based_on_last_close=prediction_based_on_last_close, user_entered_index_value=data, user_model_output=user_model_output, vix_info=vix_info, sp500_info=sp500_info )
 
+@app.route('/models',methods=['GET', 'POST'])
+def models():
+    # Get the data from the POST request.
+    # if request.method == "POST":
+        print("MODELS")
+        return render_template("models.html")
+
     
 
 # @app.route("/quote")
