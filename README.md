@@ -2,6 +2,7 @@
 
 The website for this information can be found at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
+
 ## Summary
 
 The Vix is the popular name for the Chicago Board Options Exchange's Volatility Index, a measure of the stock market's expected volatility based on S&P 500 index options. It is often referred to as the fear index or fear gauge. The Vix signals the level of fear or stress in the stock market. The higher the VIX, the greater the level of fear and uncertainty in the market, with levels above 30 indicating high levels of uncertainty.
@@ -16,9 +17,13 @@ The performance of the S&P 500 is charted here from 2000-2023.
 For each day, the one-year future return of the S&P 500 is plotted, with the percentage return on left (y-axis). The bottom (x-axis) shows the corresponding Vix value one-year prior. When the Vix is above 35, the S&P 500 has yielded positive returns 92.5% of the time over the following year. When the Vix exceeds 50, 98.6% of the returns were positive.
 
 
+
 ## Data
 
 Real-time API data on the website is collected from the [yfinance API](https://algotrading101.com/learn/yfinance-guide/). API data that used in building the machine learning models obtained from the the [yahoo-fin API](https://theautomatic.net/yahoo_fin-documentation/). All API data is originally sourced from [yahoo! Finance](https://finance.yahoo.com/).
+
+
+Three models were used, with the first model automating a three-input loop which cycled through every unique pair of 21 securities, and then grouped each pair with the future results of two other securities (the S&P 500 and oil futures). Each run therefore consisted of 420 groupings, after which the other parameters (features used as model inputs, number of days used to determine the future return, etc.) were adjusted, and then the process was repeated.
 
 21 ticker symbols were evaluated as inputs:
 ☆ S&P 500 (^GSPC)
@@ -48,6 +53,8 @@ The results were measured for two securities:
 ☆ SPY (an ETF that mirrors the S&P 500)
 ☆ USO (an ETN made up of oil futures)
 
+
+
 ## Process
 
 ### Model 1:  
@@ -60,3 +67,6 @@ Each combination of three securities was then processed and tested via an automa
 Results were reported for each of the 420 combinations. After completion, the input features and other variables (such as the length of time the results were testing) were adjusted, and the process was run to loop through and test the 420 combinations again with the adjustments. This entire process was repeated numerous times, and results were recorded. Any accuracy results over 70% for these first rounds of testing were noted.
 
 At this point, it became clear that combinations containing the 'VIX' and 'VIX3M' closing values were generally returning the highest results. The outcomes were testing for a Boolean 'yes/no' positive result. They were highest when joined with the S&P 500 results, and a timeframe of one year was especially promising. Therefore, testing the S&P 500 results with the VIX and VIX3M closing values became the inputs for the next step, Model 2.
+
+
+
