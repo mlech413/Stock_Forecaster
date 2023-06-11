@@ -81,7 +81,9 @@ With the S&P 500's one-year return as the tested result as a Boolean 'yes/no' va
 
 The optimal results determined by the KerasTuner optimizer were fed into the neural network with 8 hidden layers, nodes ranging from 35-200, and 20 epochs. An accuracy of 77.4% was returned.
 
-A pandas plot chart and a seaborn plot with linear regression showed a very clear and pronounced upward-sloping trajectory of data points. This meant that higher VIX and VIX3M values translated into higher returns of the S&P 500 one year in the future. The plot charts also made it clear that there were very few negative results as the Vix values increased. The 'VIX' symbol specifically looked stronger than 'VIX3M' on the charts. ![vix_vix3m_sp500.jpg](./static/images/vix_vix3m_sp500.jpg) ![vix_seaborn.jpg](./static/images/vix_seaborn.jpg)
+A pandas plot chart and a seaborn plot with linear regression showed a very clear and pronounced upward-sloping trajectory of data points. This meant that higher VIX and VIX3M values translated into higher returns of the S&P 500 one year in the future. The plot charts also made it clear that there were very few negative results as the Vix values increased. The 'VIX' symbol specifically looked stronger than 'VIX3M' on the charts.
+![vix_vix3m_sp500.jpg](./static/images/vix_vix3m_sp500.jpg)
+![vix_seaborn.jpg](./static/images/vix_seaborn.jpg)
 
 Symbol 'VIX' was now identified as the best choice for the final step, Model 3.
 
@@ -91,6 +93,9 @@ Symbol 'VIX' was now identified as the best choice for the final step, Model 3.
 With the second model confirming the Vix closing price as an input, it was then charted against the specific future results of the S&P 500 one year from that point in Jupyter Noebook.
 
 A Seaborn plot chart was created, along with a Matplotlib chart. Linear and non-linear regression lines were added, as well as a dividing line at zero percent with green/red plot formatting to more clearly identify positive/negative results.
+
+![vix_expanded_seaborn.jpg](./static/images/vix_expanded_seaborn.jpg)
+![vix_sp500_regressions.jpg](./static/images/vix_sp500_regressions.jpg)
 
 
 SQL was run against the data to isolate the upper Vix values. The SQL results showed that beyond a Vix closing value of 35, 283 of 309 of the one-year returns (92.5%) were positive. Above a Vix value of 50, a positive return occurred 73 of 74 times (98.6%).
