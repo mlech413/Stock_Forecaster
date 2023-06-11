@@ -97,3 +97,32 @@ SQL was run against the data to isolate the upper Vix values. The SQL results sh
 Queries also show that the average one-year return with the Vix over 35 is 28.2%, and the average over 50 is 32.4%. This is in contrast to the overall average annual return for the S&P 500 over the same period at 7% (without dividends).
 
 When building the final machine model, linear and non-linear regression models were both considered. Ultimately the linear regression model was chosen because it is the more conservative of the two on this chart. The model is available be run with user-entered values at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
+
+## Technologies
+* Python
+Flask
+GitHub
+Pandas
+Matplotlib
+Seaborn
+SQL
+Numpy
+Scipy
+Google Colaboratory
+Jupyter Notebook
+APIs (internal and external)
+Scikit-learn
+Scikit-learn: LinearRegression
+Scikit-learn: StandardScaler
+Scikit-learn: MinMaxScaler
+Scikit-learn: train_test_split
+Scikit-learn: accuracy_score
+KerasTuner
+TensorFlow
+Machine Learning
+Neural Networks
+HTML
+CSS
+Pickle
+Tableau
+Heroku
