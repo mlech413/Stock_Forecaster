@@ -50,7 +50,7 @@
                 <div class="grid-item" style="padding: 1% 1% 5% 6%;">
                     <div class="element align-center" style="width: 100%;">
                         <p><span style="font-size: 24px;">Model 1:<br/>
-                            Looping a Neural Network</span><br/><br/>
+                            Looping a Neural Network Model</span><br/><br/>
                             A Neural Network Model was run in Google Colaboratory. A list of 21 market ticker symbols were read into the code, 
                             and a loop determined each unique pair. For each pair, there were two different securities that were tested against for 
                             successful results. This created groups of three ticker symbols, and a total of 420 unique combinations to test with each model run.
@@ -65,7 +65,7 @@
                             test the 420 combinations again with the adjustments. This entire process was repeated numerous times, and results were recorded.
                             Accuracy results over 70% for these first rounds of testing were noted.
                             <br/><br/>
-                            At this point, it became clear that combinations containing the VIX and VIX3M closing values were generally returning the highest results. 
+                            At this point, it became clear that combinations containing the 'VIX' and 'VIX3M' closing values were generally returning the highest results. 
                             The outcomes tested for a boolean 'yes'no' positive result. They were highest when joined with the S&P 500 results, and a timeframe of 
                             one year was especially promising. Therefore, testing the S&P 500 results with the VIX and VIX3M closing values became the inputs for the next step, Model 2.
                         </p>
@@ -134,15 +134,26 @@
                 <div class="grid-item" style="padding: 1% 1% 5% 6%;">
                     <div class="element align-center" style="width: 100%;">
                         <p><span style="font-size: 24px;">Model 2:<br/>
-                            Optimizing the Neural Network</span><br/><br/>
-                            Now that the VIX and VIX3M closing values were identified as inputs, they could be fed into another neural network model that auto-optimized the variables. With the S&P 500's one-year return as the tested result, the two Vix symbols were scaled with MinMaxScaler this time (because all values were above zero), auto-optimized with ReLU (again because of positive values) for between 1-10 hidden layers, 5-200 nodes, and 5-20 epochs.
+                            Optimizing the Neural Network Model</span><br/><br/>
+                            Now that the 'VIX' and 'VIX3M' closing values were identified as inputs, they could be fed into another neural network model in 
+                            Google Colaboratory that auto-optimized the variables.
+                            <br/><br/>
+                            With the S&P 500's one-year return as the tested result as a boolean 'yes/no' value, the two Vix symbols were scaled with 
+                            MinMaxScaler instead (because all values were above zero). KerasTuner was used to auto-optimize the data. The activation was 
+                            with ReLU (because of positive values), between 1-10 hidden layers, 5-200 nodes, and 5-20 epochs.
 
                             <br/><br/>
-                            The optimal results used 8 hidden layers, nodes ranging from 35 - 200, and 20 epochs. 774
+                            The optimal results determined by the KerasTuner optimizer were fed into the neural network with 8 hidden layers, nodes 
+                            ranging from 35-200, and 20 epochs. An accuracy of 77.4% was returned.
                             <br/><br/>
+                            A pandas plot chart and a seaborn plot with 
+                            linear regression showed a very clear and pronounced upward-sloping trajectory of data points. This meant that higher VIX and VIX3M 
+                            values translated into higher returns of the S&P 500 one year in the future. The plot charts also made it clear that there were very 
+                            few negative results as the Vix values increased. The 'VIX' symbol specifically looked stronger than 'VIX3M' on the charts.
                             <br/><br/>
+                            Symbol 'VIX' was now identified as the best choice for the final step, Model 3.
 
-                            Google Colaboratory                 
+                                        
                         </p>
                     </div>
                 </div>
@@ -176,25 +187,35 @@
                 <div class="grid-item" style="padding: 1% 1% 5% 6%;">
                     <div class="element align-center" style="width: 100%;">
                         <p><span style="font-size: 24px;">Model 3:<br/>
-                            Linear and Non-linear Regression</span><br/><br/>
-                            fgdfjjgbdgdjbdb  guh erh hg r gh .ghuiruihg urhg hr uhrh h rh g uhrg rghg uh urgh gh  h grgh reuierh g erui 
-                             gr  hguirg hug ur r g h reug g ur ruig ueruig er ug h eruiuig g ug urg uerigh urih ugh uireg ugh uguhg uh
-                             ejeg keguiggrf uhu rf rui ruieergh  g  g  
+                            Linear and Non-linear Regressions</span><br/><br/>
+                            With the Vix closing price as an input, it was charted against the specific future results of the S&P 500 one year from that point. 
+                            A Seaborn plot chart was created, along with a Matplotlib chart. Linear and non-linear regression lines were added, as well as
+                            a dividing line at zero percent with green/red plot formatting to more clearly identify positive/negative results.
+                            <br/><br/>
+                            SQL was run against the data to isolate the upper Vix values. The SQL results showed that above a Vix closing price of 35, 283 of 309 
+                            of the one-year returns (92.5%) were positive. Above a Vix value of 50, a positive return occured 73 of 74 times (98.6%).
+                            <br/><br/>
+                            Queries also show that the average one-year return woth a Vix over 35 is 28.2%, and the average over 50 is 32.4%. 
+                            This is in contrast to the overall average annual return for the S&P 500 over the same period at 7% (without dividends).
+                            <br/><br/>
+                            The linear and non-linear regression lines were both considered for the machine learning model. Ultimately the linear regression line 
+                            was chosen because in this chart, it is the more conservative of the two. The model is available be run with user-entered values on the home page.
+
                         </p>
                     </div>
                 </div>
 
             </div>
             <div class="middle">
-                <div class="no-br" style="padding: 1% 1% 5% 0%; width: 600px;">
+                <div class="no-br" style="padding: 1% 1% 5% 0%; width: 650px;">
                     <img src="static/images/model3.jpg" width="100%" style="padding: 1%" alt="Screenshot of Model 3"/>
                     <img src="static/images/model3_sql.jpg" width="100%" style="padding: 1%" alt="Model3 SQL"/>            
                 </div>
             </div>  
             <div class="right">
-                <div class="no-br" style="padding: 5% 1%; width: 600px;">
-                    <img src="static/images/vix_expanded_seaborn.jpg" width="600px" style="padding: 1%" alt="Model3 SQL"/>     
-                    <img src="static/images/vix_sp500_regressions.jpg" width="600px" style="padding: 1%" alt="Vix-S&P 500 Chart"/>        
+                <div class="no-br" style="padding: 5% 1%; width: 700px;">
+                    <img src="static/images/vix_expanded_seaborn.jpg" width="700px" style="padding: 1%" alt="Model3 SQL"/>     
+                    <img src="static/images/vix_sp500_regressions.jpg" width="700px" style="padding: 1%" alt="Vix-S&P 500 Chart"/>        
                 </div>
                 
             </div>
