@@ -25,32 +25,32 @@ Real-time API data on the website is collected from the [yfinance API](https://a
 
 Three models were used, with the first model automating a three-input loop which cycled through every unique pair of 21 securities, and then grouped each pair with the future results of two other securities (the S&P 500 and oil futures). Each run therefore consisted of 420 groupings, after which the other parameters (features used as model inputs, number of days used to determine the future return, etc.) were adjusted, and then the process was repeated.
 
-21 ticker symbols were evaluated as inputs:
-☆ S&P 500 (^GSPC)
-☆ Dow Jones Industrial Average (^DJI)
-☆ NASDAQ Composite (^IXIC)
-☆ Russell 2000 (^RUT)
-☆ S&P Consumer Staples Sector (XLP)
-☆ S&P Energy Sector (XLE)
-☆ S&P Financial Sector (XLF)
-☆ S&P Health Care Sector (XLV)
-☆ S&P Industrial Sector (XLI)
-☆ S&P Materials Sector (XLB)
-☆ S&P Real Estate Sector (XLRE)
-☆ S&P Technology Sector (XLK)
-☆ S&P Utilities Sector (XLU)
-☆ S&P Communication Services (XLC)
-☆ S&P Consumer Discretionary (XLY)
-☆ CBOE Volatility Index (^VIX)
-☆ CBOE 3-Month Volatility (^VIX3M)
-☆ Crude Oil Futures (CL=F)
-☆ Treasury Yield 10 Years (^TNX)
-☆ Bitcoin USD (BTC-USD)
+21 ticker symbols were evaluated as inputs:  
+☆ S&P 500 (^GSPC)  
+☆ Dow Jones Industrial Average (^DJI)  
+☆ NASDAQ Composite (^IXIC)  
+☆ Russell 2000 (^RUT)  
+☆ S&P Consumer Staples Sector (XLP)  
+☆ S&P Energy Sector (XLE)  
+☆ S&P Financial Sector (XLF)  
+☆ S&P Health Care Sector (XLV)  
+☆ S&P Industrial Sector (XLI)  
+☆ S&P Materials Sector (XLB)  
+☆ S&P Real Estate Sector (XLRE)  
+☆ S&P Technology Sector (XLK)  
+☆ S&P Utilities Sector (XLU)  
+☆ S&P Communication Services (XLC)  
+☆ S&P Consumer Discretionary (XLY)  
+☆ CBOE Volatility Index (^VIX)  
+☆ CBOE 3-Month Volatility (^VIX3M)  
+☆ Crude Oil Futures (CL=F)  
+☆ Treasury Yield 10 Years (^TNX)  
+☆ Bitcoin USD (BTC-USD)  
 ☆ CMC Crypto 200 Index (^CMC200)
 
 
-The results were measured for two securities:
-☆ SPY (an ETF that mirrors the S&P 500)
+The results were measured for two securities:  
+☆ SPY (an ETF that mirrors the S&P 500)  
 ☆ USO (an ETN made up of oil futures)
 
 
