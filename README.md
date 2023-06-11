@@ -30,7 +30,7 @@ For each day, the one-year future return of the S&P 500 is plotted, with the per
 'model.pkl' was exported from Model3_Stock_VIX_SP500.ipynb and embedded at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
 Flask application 'app.py' contains 3 routes:
-* home (/) renders index.html, for the initial load
+* / (home) renders index.html, for the initial load
 * predict also renders index.html, but modified for returning user entered modelling results
 * models renders models.html, for a more detailed description of processes
 
@@ -39,7 +39,9 @@ templates/models.html for additional information on the machine learning models
 static/css/styles.css for style formating
 static/images for displayed images
 
-'Procfile' and 'requirements.txt' for Heroku deployment
+data folder for two .xlsx files exported from 'Model1_Stock_multi_loop_Neural_Net_Mach_Learn.ipynb'
+
+'Procfile', 'requirements.txt', and the stock-forecaster folder for Heroku deployment
 
 ## Data
 
