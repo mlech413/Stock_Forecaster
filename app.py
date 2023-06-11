@@ -6,7 +6,7 @@ the results in JSON format.
 '''
 
 # Import libraries
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template 
 import yfinance as yf
 import numpy as np
 import pickle

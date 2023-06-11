@@ -3,6 +3,7 @@
 The website for this information can be found at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
 
+
 ## Summary
 
 The Vix is the popular name for the Chicago Board Options Exchange's Volatility Index, a measure of the stock market's expected volatility based on S&P 500 index options. It is often referred to as the fear index or fear gauge. The Vix signals the level of fear or stress in the stock market. The higher the VIX, the greater the level of fear and uncertainty in the market, with levels above 30 indicating high levels of uncertainty.
@@ -28,32 +29,32 @@ Real-time API data on the website is collected from the [yfinance API](https://a
 Three models were used, with the first model automating a three-input loop which cycled through every unique pair of 21 securities, and then grouped each pair with the future results of two other securities (the S&P 500 and oil futures). Each run therefore consisted of 420 groupings, after which the other parameters (features used as model inputs, number of days used to determine the future return, etc.) were adjusted, and then the process was repeated.
 
 21 ticker symbols were evaluated as inputs:  
-☆ S&P 500 (^GSPC)  
-☆ Dow Jones Industrial Average (^DJI)  
-☆ NASDAQ Composite (^IXIC)  
-☆ Russell 2000 (^RUT)  
-☆ S&P Consumer Staples Sector (XLP)  
-☆ S&P Energy Sector (XLE)  
-☆ S&P Financial Sector (XLF)  
-☆ S&P Health Care Sector (XLV)  
-☆ S&P Industrial Sector (XLI)  
-☆ S&P Materials Sector (XLB)  
-☆ S&P Real Estate Sector (XLRE)  
-☆ S&P Technology Sector (XLK)  
-☆ S&P Utilities Sector (XLU)  
-☆ S&P Communication Services (XLC)  
-☆ S&P Consumer Discretionary (XLY)  
-☆ CBOE Volatility Index (^VIX)  
-☆ CBOE 3-Month Volatility (^VIX3M)  
-☆ Crude Oil Futures (CL=F)  
-☆ Treasury Yield 10 Years (^TNX)  
-☆ Bitcoin USD (BTC-USD)  
-☆ CMC Crypto 200 Index (^CMC200)
+* S&P 500 (^GSPC)  
+* Dow Jones Industrial Average (^DJI)  
+* NASDAQ Composite (^IXIC)  
+* Russell 2000 (^RUT)  
+* S&P Consumer Staples Sector (XLP)  
+* S&P Energy Sector (XLE)  
+* S&P Financial Sector (XLF)  
+* S&P Health Care Sector (XLV)  
+* S&P Industrial Sector (XLI)  
+* S&P Materials Sector (XLB)  
+* S&P Real Estate Sector (XLRE)  
+* S&P Technology Sector (XLK)  
+* S&P Utilities Sector (XLU)  
+* S&P Communication Services (XLC)  
+* S&P Consumer Discretionary (XLY)  
+* CBOE Volatility Index (^VIX)  
+* CBOE 3-Month Volatility (^VIX3M)  
+* Crude Oil Futures (CL=F)  
+* Treasury Yield 10 Years (^TNX)  
+* Bitcoin USD (BTC-USD)  
+* CMC Crypto 200 Index (^CMC200)
 
 
 The results were measured for two securities:  
-☆ SPY (an ETF that mirrors the S&P 500)  
-☆ USO (an ETN made up of oil futures)
+* SPY (an ETF that mirrors the S&P 500)  
+* USO (an ETN made up of oil futures)
 
 
 
@@ -98,31 +99,43 @@ Queries also show that the average one-year return with the Vix over 35 is 28.2%
 
 When building the final machine model, linear and non-linear regression models were both considered. Ultimately the linear regression model was chosen because it is the more conservative of the two on this chart. The model is available be run with user-entered values at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
+
+
 ## Technologies
 * Python
-Flask
-GitHub
-Pandas
-Matplotlib
-Seaborn
-SQL
-Numpy
-Scipy
-Google Colaboratory
-Jupyter Notebook
-APIs (internal and external)
-Scikit-learn
-Scikit-learn: LinearRegression
-Scikit-learn: StandardScaler
-Scikit-learn: MinMaxScaler
-Scikit-learn: train_test_split
-Scikit-learn: accuracy_score
-KerasTuner
-TensorFlow
-Machine Learning
-Neural Networks
-HTML
-CSS
-Pickle
-Tableau
-Heroku
+* Flask
+* GitHub
+* Pandas
+* Matplotlib
+* Seaborn
+* SQL
+* Numpy
+* Scipy
+* Google Colaboratory
+* Jupyter Notebook
+* APIs (internal and external)
+* Scikit-learn
+* Scikit-learn: LinearRegression
+* Scikit-learn: StandardScaler
+* Scikit-learn: MinMaxScaler
+* Scikit-learn: train_test_split
+* Scikit-learn: accuracy_score
+* KerasTuner
+* TensorFlow
+* Machine Learning
+* Neural Networks
+* HTML
+* CSS
+* Pickle
+* Tableau
+* Heroku
+
+
+
+## Conclusion
+
+First, we've heard it a million times, but it is still worth saying: Past performance may not be indicative of future results. There can be no assurance that the future performance of any specific investment, investment strategy, or product made reference to directly or indirectly on this website will be profitable, equal any corresponding indicated historical performance levels, or be suitable for your portfolio.
+
+That said, the historical average of the Vix is just north of 20. However, values of the Vix going back to January, 2000 show long periods of relative calm interrupted by spikes in volatility. Historically, the model indicates that significant spikes are signals that the S&P 500 will likely be higher one-year from that point.
+
+The testing results indicate a strong correlation between elevated Vix levels and positive one-year future returns from the S&P 500. For potential investors, a time to consider investing for a one-year period in the S&P 500 could be when the Vix is above 35, with results in a positive return frequency of 92.5%. A Vix over 50 has a smaller sample size but an even higher positive frequency of 98.6%.
