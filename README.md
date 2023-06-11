@@ -11,6 +11,8 @@ The S&P 500 is the Standard and Poor's 500 index - a stock market index tracking
 
 Machine learning models here demonstrate how elevated levels of the Vix can help predict a positive gain for the S&P 500 index one year into the future. When the Vix rises above 35, and especially above 50, this chart illustrates the historical return on the S&P 500 over the following year.
 
+The process and results are also presented at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
+
 ![alt text](./static/images/vix_sp500_regressions.jpg)
 The performance of the S&P 500 is charted here from 2000-2023.
 
@@ -68,5 +70,30 @@ Results were reported for each of the 420 combinations. After completion, the in
 
 At this point, it became clear that combinations containing the 'VIX' and 'VIX3M' closing values were generally returning the highest results. The outcomes were testing for a Boolean 'yes/no' positive result. They were highest when joined with the S&P 500 results, and a timeframe of one year was especially promising. Therefore, testing the S&P 500 results with the VIX and VIX3M closing values became the inputs for the next step, Model 2.
 
+### Model 2:
+### Optimizing the Neural Network Model
 
+The results from the first model narrowed down the search, and so they were fed into a second model to optimize the testing, while plots were used to verify the data distribution.
 
+Now that the 'VIX' and 'VIX3M' closing values were identified as inputs, they could be fed into another neural network model in Google Colaboratory that auto-optimized the variables. 'yahoo! Finance' data was again retrieved via the yahoo-fin API, and then was cleaned and merged into a pandas dataframe.
+
+With the S&P 500's one-year return as the tested result as a Boolean 'yes/no' value, the two Vix symbols were scaled with MinMaxScaler instead (because all values were above zero). KerasTuner was used to auto-optimize the data. The activation was with ReLU (because of positive values), between 1-10 hidden layers, 5-200 nodes, and 5-20 epochs.
+
+The optimal results determined by the KerasTuner optimizer were fed into the neural network with 8 hidden layers, nodes ranging from 35-200, and 20 epochs. An accuracy of 77.4% was returned.
+
+A pandas plot chart and a seaborn plot with linear regression showed a very clear and pronounced upward-sloping trajectory of data points. This meant that higher VIX and VIX3M values translated into higher returns of the S&P 500 one year in the future. The plot charts also made it clear that there were very few negative results as the Vix values increased. The 'VIX' symbol specifically looked stronger than 'VIX3M' on the charts.
+
+Symbol 'VIX' was now identified as the best choice for the final step, Model 3.
+
+### Model 3:
+### Linear and Non-linear Regressions
+
+With the second model confirming the Vix closing price as an input, it was then charted against the specific future results of the S&P 500 one year from that point in Jupyter Noebook.
+
+A Seaborn plot chart was created, along with a Matplotlib chart. Linear and non-linear regression lines were added, as well as a dividing line at zero percent with green/red plot formatting to more clearly identify positive/negative results.
+
+SQL was run against the data to isolate the upper Vix values. The SQL results showed that beyond a Vix closing value of 35, 283 of 309 of the one-year returns (92.5%) were positive. Above a Vix value of 50, a positive return occurred 73 of 74 times (98.6%).
+
+Queries also show that the average one-year return with the Vix over 35 is 28.2%, and the average over 50 is 32.4%. This is in contrast to the overall average annual return for the S&P 500 over the same period at 7% (without dividends).
+
+When building the final machine model, linear and non-linear regression models were both considered. Ultimately the linear regression model was chosen because it is the more conservative of the two on this chart. The model is available be run with user-entered values at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
