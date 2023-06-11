@@ -20,6 +20,27 @@ For each day, the one-year future return of the S&P 500 is plotted, with the per
 
 
 
+## Modules
+
+3 machine learning modules were built and run in succession:
+* 'Model1_Stock_multi_loop_Neural_Net_Mach_Learn.ipynb'
+* 'Model2_Stock_single_pair_multi_test_Neural_Net_Mach_Learn.ipynb'
+* 'Model3_Stock_VIX_SP500.ipynb'
+
+'model.pkl' was exported from Model3_Stock_VIX_SP500.ipynb and embedded at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
+
+Flask application 'app.py' contains 3 routes:
+* home (/) renders index.html, for the initial load
+* predict also renders index.html, but modified for returning user entered modelling results
+* models renders models.html, for a more detailed description of processes
+
+templates/index.html for the main web page
+templates/models.html for additional information on the machine learning models
+static/css/styles.css for style formating
+static/images for displayed images
+
+'Procfile' and 'requirements.txt' for Heroku deployment
+
 ## Data
 
 Real-time API data on the website is collected from the [yfinance API](https://algotrading101.com/learn/yfinance-guide/). API data that used in building the machine learning models obtained from the the [yahoo-fin API](https://theautomatic.net/yahoo_fin-documentation/). All API data is originally sourced from [yahoo! Finance](https://finance.yahoo.com/).
@@ -99,6 +120,7 @@ A Seaborn plot chart was created, along with a Matplotlib chart. Linear and non-
 
 
 SQL was run against the data to isolate the upper Vix values. The SQL results showed that beyond a Vix closing value of 35, 283 of 309 of the one-year returns (92.5%) were positive. Above a Vix value of 50, a positive return occurred 73 of 74 times (98.6%).
+![model3_sql.jpg](./static/images/model3_sql.jpg)
 
 Queries also show that the average one-year return with the Vix over 35 is 28.2%, and the average over 50 is 32.4%. This is in contrast to the overall average annual return for the S&P 500 over the same period at 7% (without dividends).
 
