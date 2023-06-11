@@ -122,6 +122,7 @@ A Seaborn plot chart was created, along with a Matplotlib chart. Linear and non-
 
 
 SQL was run against the data to isolate the upper Vix values. The SQL results showed that beyond a Vix closing value of 35, 283 of 309 of the one-year returns (92.5%) were positive. Above a Vix value of 50, a positive return occurred 73 of 74 times (98.6%).
+
 ![model3_sql.jpg](./static/images/model3_sql.jpg)
 
 Queries also show that the average one-year return with the Vix over 35 is 28.2%, and the average over 50 is 32.4%. This is in contrast to the overall average annual return for the S&P 500 over the same period at 7% (without dividends).
@@ -167,4 +168,4 @@ First, we've heard it a million times, but it is still worth saying: Past perfor
 
 That said, the historical average of the Vix is just north of 20. However, values of the Vix going back to January, 2000 show long periods of relative calm interrupted by spikes in volatility. Historically, the model indicates that significant spikes are signals that the S&P 500 will likely be higher one-year from that point.
 
-The testing results indicate a strong correlation between elevated Vix levels and positive one-year future returns from the S&P 500. For potential investors, a time to consider investing for a one-year period in the S&P 500 could be when the Vix is above 35, with results in a positive return frequency of 92.5%. A Vix over 50 has a smaller sample size but an even higher positive frequency of 98.6%.
+The testing results indicate a strong correlation between elevated Vix levels and positive one-year future returns from the S&P 500. For potential investors, a time to consider investing for a one-year period in the S&P 500 could be when the Vix is above 35, with results of a positive return frequency of 92.5%. A Vix over 50 has a smaller sample size but a higher positive frequency of 98.6%.
