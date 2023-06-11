@@ -10,6 +10,8 @@
         <div class="topnav">
             <a class="active" href="/">Home</a>
             <a href="/models">Models</a>
+            <p class="title">STOCK MARKET PREDICTOR: Using the Vix to Predict the S&P 500 in One Year</p>
+            
         </div>
 
     </header>
@@ -43,7 +45,7 @@
             </div>
             <div class="middle">
                 <div class="grid-child no-br">
-                    <img src="static/images/vix_sp500_regressions.jpg" width="550px" alt=" VIX as an Indicator for Future S&P 500 Returns"/>           
+                    <img src="static/images/vix_sp500_regressions.jpg" width="550px" alt="Vix-S&P 500 Chart"/>           
 
                             <p style="width: 550px;">The performance of the S&P 500 is charted here from 2000-2023.
                                 <br/><br/>
@@ -58,7 +60,7 @@
                 <div class="grid-child no-br">
                     <form action="/predict" method="POST" class="form">
                         <div class="fieldset level-1-br">
-                            <label>Based on the current Vix value of <span style="color:yellow">{{vix_close}}</span>, 
+                            <label>Based on the current Vix value of <span style="color:yellow">{{vix_info['previousClose']}} </span>, 
                                 the model projects a 1-year return of <span style="color:yellow">{{prediction_based_on_last_close}}</span> 
                                 for the S&P 500 index.</label>
                         </div>
@@ -79,18 +81,27 @@
 
 
         <marquee class="ticker-item" behavior="scroll" direction="left">
-            <p style="color: white">
-            Vix most recent close: {{vix_info['previousClose']}} 
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            Vix 52-week high: {{vix_info['fiftyTwoWeekHigh']}} 
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            Vix 52-week low: {{vix_info['fiftyTwoWeekLow']}}
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            S&P 500 most recent close: {{sp500_info['previousClose']}} 
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            S&P 500 52-week high: {{sp500_info['fiftyTwoWeekHigh']}} 
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            S&P 500 52-week low: {{sp500_info['fiftyTwoWeekLow']}}
+            <p style="color: white; font-family: Helvetica;">
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            VIX MOST RECENT CLOSE: {{vix_info['previousClose']}} 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            VIX 52-WEEK HIGH: {{vix_info['fiftyTwoWeekHigh']}} 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            VIX 52-WEEK LOW: {{vix_info['fiftyTwoWeekLow']}}
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            VIX 50-DAY AVERAGE: {{vix_info['fiftyDayAverage']}} 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            VIX 200-DAY AVERAGE: {{vix_info['twoHundredDayAverage']}}
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            S&P 500 MOST RECENT CLOSE: {{sp500_info['previousClose']}} 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            S&P 500 52-WEEK HIGH: {{sp500_info['fiftyTwoWeekHigh']}} 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            S&P 500 52-WEEK LOW: {{sp500_info['fiftyTwoWeekLow']}}
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            S&P 500 50-DAY AVERAGE: {{sp500_info['fiftyDayAverage']}} 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            S&P 500 200-DAY AVERAGE: {{sp500_info['twoHundredDayAverage']}}
             </p>
         </marquee>
 
@@ -120,19 +131,20 @@
         </div>
 
         <div class="topnav">
-            <a class="active" href="/">Home</a>
-            <a href="/models">Models</a>
+            <a href="/">Home</a>
+            <a class="active"href="/models">Models</a>
+            <p style="color: white;padding: 0 0 0 220px;">
+            Past  performance  may  not  be  indicative  of  future  results.  There can be no assurance that the future performance 
+            of any specific investment, investment strategy, or product made reference to directly or indirectly on this website 
+            will be profitable, equal any corresponding indicated historical performance levels, or be suitable for your portfolio.
+            </p>
         </div>
         <div class="top-item">
-            <p style="color: white; font-size: 14px;">
-                Real-time API data on this website is collected from <a href="https://algotrading101.com/learn/yfinance-guide/" target="_blank" rel="noopener noreferrer" style="color: white;">yfinance API</a>.
-                API data that was used in building the machine learning models was obtained from <a href="https://theautomatic.net/yahoo_fin-documentation/" target="_blank" rel="noopener noreferrer" style="color: white;">yahoo-fin API</a>.
-                Both APIs source their data from <a href="https://finance.yahoo.com/" target="_blank" rel="noopener noreferrer" style="color: white;">yahoo! Finance</a>.
-                <br/><br/>
-                Past  performance  may  not  be  indicative  of  future  results.  There can be no assurance that the future performance 
-                of any specific investment, investment strategy, or product made reference to directly or indirectly on this website 
-                will be profitable, equal any corresponding indicated historical performance levels, or be suitable for your portfolio.
-            </p>
+            <p style="color: white;">
+                    Real-time API data on this website is collected from <a href="https://algotrading101.com/learn/yfinance-guide/" target="_blank" rel="noopener noreferrer" style="color: white;">yfinance API</a>.
+                    API data that used in building the machine learning models obtained from <a href="https://theautomatic.net/yahoo_fin-documentation/" target="_blank" rel="noopener noreferrer" style="color: white;">yahoo-fin API</a>.
+                    All API data is originally sourced from <a href="https://finance.yahoo.com/" target="_blank" rel="noopener noreferrer" style="color: white;">yahoo! Finance</a>.
+                    </p>
         </div>
     
     </body>

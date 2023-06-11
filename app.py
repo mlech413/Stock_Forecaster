@@ -19,34 +19,50 @@ model = pickle.load(open('./model.pkl','rb'))
 
 @app.route('/',methods=['GET'])
 def home():
+    print("HOME")
     # symbol = request.args.get('symbol', default="^VIX")
     user_entered_index_value = ""
     # Get the VIX current value
     quote = yf.Ticker('^VIX')
     vix_info = quote.info
-    vix_close = vix_info['previousClose']
     quote = yf.Ticker('^GSPC')
-    sp500_info = quote.info
+    sp500_info = quote.info 
+    # Format commas and rounding for display on page
+    vix_info['fiftyDayAverage'] = (round(vix_info['fiftyDayAverage'],2))
+    vix_info['twoHundredDayAverage'] = (round(vix_info['twoHundredDayAverage'],2))
+    sp500_info['previousClose'] = ('{:,}'.format(round(sp500_info['previousClose'],2)))
+    sp500_info['fiftyTwoWeekHigh'] = ('{:,}'.format(round(sp500_info['fiftyTwoWeekHigh'],2)))
+    sp500_info['fiftyTwoWeekLow'] = ('{:,}'.format(round(sp500_info['fiftyTwoWeekLow'],2)))
+    sp500_info['fiftyDayAverage'] = ('{:,}'.format(round(sp500_info['fiftyDayAverage'],2)))
+    sp500_info['twoHundredDayAverage'] = ('{:,}'.format(round(sp500_info['twoHundredDayAverage'],2)))
     # Make a prediction using the model for the current vix value from the api
     prediction = model.predict([[vix_info['previousClose']]])
     # Multiple by 100, round, convert to string, remove leading & trailing [] array brackets, add % sign
     prediction_based_on_last_close = str(np.round(prediction[0]*100, 2))[1:][:-1]+"%"
-    return render_template("index.html", prediction_based_on_last_close=prediction_based_on_last_close, vix_close=vix_close, user_entered_index_value=user_entered_index_value, vix_info=vix_info, sp500_info=sp500_info)
+    return render_template("index.html", prediction_based_on_last_close=prediction_based_on_last_close, user_entered_index_value=user_entered_index_value, vix_info=vix_info, sp500_info=sp500_info)
 
 
 @app.route('/predict',methods=['GET', 'POST'])
 def predict():
+    print("PREDICT")
     # Get the data from the POST request.
     if request.method == "POST":
         # Get the VIX current value
         quote = yf.Ticker('^VIX')
         vix_info = quote.info
-        vix_close = vix_info['previousClose']
         quote = yf.Ticker('^GSPC')
         sp500_info = quote.info
+        # Format commas and rounding for display on page
+        vix_info['fiftyDayAverage'] = (round(vix_info['fiftyDayAverage'],2))
+        vix_info['twoHundredDayAverage'] = (round(vix_info['twoHundredDayAverage'],2))
+        sp500_info['previousClose'] = ('{:,}'.format(round(sp500_info['previousClose'],2)))
+        sp500_info['fiftyTwoWeekHigh'] = ('{:,}'.format(round(sp500_info['fiftyTwoWeekHigh'],2)))
+        sp500_info['fiftyTwoWeekLow'] = ('{:,}'.format(round(sp500_info['fiftyTwoWeekLow'],2)))
+        sp500_info['fiftyDayAverage'] = ('{:,}'.format(round(sp500_info['fiftyDayAverage'],2)))
+        sp500_info['twoHundredDayAverage'] = ('{:,}'.format(round(sp500_info['twoHundredDayAverage'],2)))
         # Print out user-entered value
         print("User entered index_value: ", request.form['index_value'])
-        # If user hit the enter button without any value, make it zero so the model doesn't fail
+        # If user hit the enter button without entering a value, replace with zero so the model doesn't error out
         if request.form['index_value'] == "":
             data = 0
         else:
@@ -62,11 +78,11 @@ def predict():
         # Multiple by 100, round, convert to string, remove leading & trailing [] array brackets, add % sign
         user_model_output = str(np.round(prediction[0]*100, 2))[1:][:-1]+"%"
         # return render_template("index.html", model_output=model_output, vix_close=vix_close)
-        return render_template("index.html", vix_close=vix_close, prediction_based_on_last_close=prediction_based_on_last_close, user_entered_index_value=data, user_model_output=user_model_output, vix_info=vix_info, sp500_info=sp500_info )
+        return render_template("index.html", prediction_based_on_last_close=prediction_based_on_last_close, user_entered_index_value=data, user_model_output=user_model_output, vix_info=vix_info, sp500_info=sp500_info )
 
 @app.route('/models',methods=['GET', 'POST'])
 def models():
-    print("MODELS")
+    print("MODELS route")
     return render_template("models.html")
 
     
