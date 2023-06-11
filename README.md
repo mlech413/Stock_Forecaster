@@ -164,7 +164,7 @@ When building the final machine model, linear and non-linear regression models w
 
 ## Conclusion
 
-First, we've heard it a million times, but it is still worth saying: Past performance may not be indicative of future results. There can be no assurance that the future performance of any specific investment, investment strategy, or product made reference to directly or indirectly on this website will be profitable, equal any corresponding indicated historical performance levels, or be suitable for your portfolio.
+It's been said many times before but is still worth saying: Past performance may not be indicative of future results. There can be no assurance that the future performance of any specific investment, investment strategy, or product made reference to directly or indirectly on this website will be profitable, equal any corresponding indicated historical performance levels, or be suitable for your portfolio.
 
 That said, the historical average of the Vix is just north of 20. However, values of the Vix going back to January, 2000 show long periods of relative calm interrupted by spikes in volatility. Historically, the model indicates that significant spikes are signals that the S&P 500 will likely be higher one-year from that point.
 
