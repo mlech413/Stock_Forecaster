@@ -146,9 +146,9 @@ p {
     background: none;
   }
 
-  /* button value to run model */
+  /* input text box to enter value to run model */
 .user_entered_index_value {
-    width: 95%;
+    width: 90%;
     margin:0 auto;
     height: 50px;
     margin: 15px;
@@ -174,7 +174,7 @@ label {
     border-style: none;
     border-color: initial;
     border-image: initial;
-    padding: 16px 60px;
+    padding: 16px;
     outline: none;
     width: 100%;
     transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.2) 0s;
