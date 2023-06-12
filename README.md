@@ -17,6 +17,7 @@ Three machine learning models used together have uncovered and demonstrated an i
 The process and results are also presented at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
 ![vix_sp500_regressions.jpg](./static/images/vix_sp500_regressions.jpg)
+
 The performance of the S&P 500 is charted here from 2000-2023.
 
 Each plotted point represents one day. The one-year gain/loss of the S&P 500 is on left (y-axis). The bottom (x-axis) shows the corresponding Vix value one-year prior. When the Vix rises above 35, the S&P 500 has yielded positive returns 92.5% of the time (283 out of 309) over the following year. When the Vix exceeds 50, the sample size is smaller but 98.6% of the returns (73 of 74) were positive.
@@ -26,9 +27,9 @@ Each plotted point represents one day. The one-year gain/loss of the S&P 500 is 
 ## Modules
 
 3 machine learning modules were built and run in succession:
-* 'Model1_Stock_multi_loop_Neural_Net_Mach_Learn.ipynb'
-* 'Model2_Stock_single_pair_multi_test_Neural_Net_Mach_Learn.ipynb'
-* 'Model3_Stock_VIX_SP500.ipynb'
+* Model1_Stock_multi_loop_Neural_Net_Mach_Learn.ipynb
+* Model2_Stock_single_pair_multi_test_Neural_Net_Mach_Learn.ipynb
+* Model3_Stock_VIX_SP500.ipynb
 
 'model.pkl' was exported from Model3_Stock_VIX_SP500.ipynb and embedded at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
@@ -127,7 +128,9 @@ Queries also show that the average one-year return with the Vix over 35 is 28.2%
 
 Despite the wide spread of data on the chart, the true value of the modeled data and charting is not in the coefficient of determination (only 0.03), it is unquestionably uncovering the upper range of the VIX and its impact on the S&P 500 returns in the future. The low coefficient of determination is due to the thousands of mixed data points in the lower ranges, along with the high spread of data in the upper ranges. The upper range data, however, is overwhelmingly positive, and that is undoubtably a more important factor.
 
-When building the final machine model, linear and non-linear regression models were both considered. Ultimately the linear regression model was chosen because it is the more conservative of the two on this chart. The model is available be run with user-entered values at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
+The far more important (and potentially useful) values are regarding the Vix closing values over of 35 which yielded success 92.5% of the time, and the Vix above 50 which had a 98.6% success rate.
+
+When building the final machine model, linear and non-linear regression models were both considered. Ultimately the linear regression model was chosen because it is the more conservative of the two on this chart. The final model was built and exported with Python Pickle, and is is available be run against user-entered values at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
 
 
@@ -164,6 +167,6 @@ When building the final machine model, linear and non-linear regression models w
 
 ## Conclusion
 
-The historical average of the Vix is just north of 20 but values of the Vix from 2000 - 2023 show long periods of relative calm interrupted by spikes in volatility. Historically, the models demonstrate that significant VIX spikes above 35, and especially above 50, are signals that the S&P 500 has been higher one-year from that point. The most prominent examples are when the Vix is above 35, which has resulted in a positive return frequency of 92.5%. A Vix over 50 has a smaller sample size but a higher positive frequency of 98.6%.
+The historical average of the Vix is just north of 20 but values of the Vix from 2000 - 2023 show long periods of relative calm interrupted by spikes in volatility. Historically, the models demonstrate that significant VIX spikes above 35, and especially above 50, are signals that the S&P 500 has been higher one-year from that point. The most prominent examples are when the Vix is above 35, which has resulted in a positive return 92.5% of the time. A Vix over 50 has a smaller sample size but a higher positive frequency of 98.6%.
 
 Past performance may not be indicative of future results. The information on this site is provided for discussion purposes and should <b>not</b> be considered as investment advice. There is no assurance that the future performance of any investment, strategy, or product made reference to directly or indirectly here will be profitable, equal any historical performance levels, or be suitable for your portfolio.
