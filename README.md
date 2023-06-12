@@ -2,7 +2,7 @@
 
 This website is hosted at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
-Past performance may not be indicative of future results. The information on this site is provided for discussion purposes and should not be misconstrued as investment advice. There is no assurance that the future performance of any investment, strategy, or product made reference to directly or indirectly here will be profitable, equal any historical performance levels, or be suitable for your portfolio
+Past performance may not be indicative of future results. The information on this site is provided for discussion purposes and should <b>not</b> be considered as investment advice. There is no assurance that the future performance of any investment, strategy, or product made reference to directly or indirectly here will be profitable, equal any historical performance levels, or be suitable for your portfolio.
 
 
 
@@ -125,7 +125,7 @@ SQL was run against the data to isolate the upper Vix values. The SQL results sh
 
 Queries also show that the average one-year return with the Vix over 35 is 28.2%, and the average over 50 is 32.4%. This is in contrast to the overall average annual return for the S&P 500 over the same period at 7% (without dividends).
 
-Despite the wide spread of data on the chart, the true value of the modeled data and charting is not in the coefficient of determination (a very modest 0.03), it is unquestionably uncovering the upper range of the VIX and it's impact on the S&P 500 returns in the future. The low coefficient of determination is due to the thousands of mixed data points in the lower ranges, along with the high spread of data in the upper ranges. The upper range data, however, is overwhelmingly positive, and that is undoubtably a very important factor when evaluating potential investments.
+Despite the wide spread of data on the chart, the true value of the modeled data and charting is not in the coefficient of determination (only 0.03), it is unquestionably uncovering the upper range of the VIX and its impact on the S&P 500 returns in the future. The low coefficient of determination is due to the thousands of mixed data points in the lower ranges, along with the high spread of data in the upper ranges. The upper range data, however, is overwhelmingly positive, and that is undoubtably a more important factor.
 
 When building the final machine model, linear and non-linear regression models were both considered. Ultimately the linear regression model was chosen because it is the more conservative of the two on this chart. The model is available be run with user-entered values at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
@@ -166,4 +166,4 @@ When building the final machine model, linear and non-linear regression models w
 
 The historical average of the Vix is just north of 20 but values of the Vix from 2000 - 2023 show long periods of relative calm interrupted by spikes in volatility. Historically, the models demonstrate that significant VIX spikes above 35, and especially above 50, are signals that the S&P 500 has been higher one-year from that point. The most prominent examples are when the Vix is above 35, which has resulted in a positive return frequency of 92.5%. A Vix over 50 has a smaller sample size but a higher positive frequency of 98.6%.
 
-Past performance may not be indicative of future results. The information on this site is provided for discussion purposes and should <b>not</b> be considered to be investment advice. There is no assurance that the future performance of any investment, strategy, or product made reference to directly or indirectly here will be profitable, equal any historical performance levels, or be suitable for your portfolio.
+Past performance may not be indicative of future results. The information on this site is provided for discussion purposes and should <b>not</b> be considered as investment advice. There is no assurance that the future performance of any investment, strategy, or product made reference to directly or indirectly here will be profitable, equal any historical performance levels, or be suitable for your portfolio.
