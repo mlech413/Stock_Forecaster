@@ -85,26 +85,27 @@ The results were measured for two securities:
 ### Model 1:  
 ### Looping a Neural Network Model
 
-The first model was a neural network run in Google Colaboratory. A list of 21 market ticker symbols were read into the code, and a loop determined each unique pair. For each pair, there were two different securities that were tested against for successful results. This created groups of three ticker symbols, and a total of 420 unique combinations to test with each model run.
+The first model was a neural network run in Google Colaboratory. A list of 21 market ticker symbols were read into the code, and a loop determined each unique pair. That resulted in 210 unique pairs. For each pair, there were two different outut securities that were tested against for successful results. This resulted in 420 unique combinations to test with each run of the model.
 
-Each combination of three securities was then processed and tested via an automated inner loop wrapped in an outer loop. 'yahoo! Finance' data for each was retrieved and loaded into pandas dataframes via the yahoo-fin API. The data was cleaned and merged into a single dataframe. The data was then scaled with StandardScaler, trained, compiled, and fit into a ReLU neural network model with 2 hidden layers, 5 nodes, and 5 epochs.
+Each combination of three securities was then processed and tested via an automated inner loop with an outer loop. 'yahoo! Finance' data for each was retrieved and loaded into pandas dataframes via the yahoo-fin API. The data was cleaned and merged into a single dataframe. The data was then scaled with StandardScaler, trained, compiled, and fit into a ReLU neural network model with 2 hidden layers, 5 nodes, and 5 epochs.
 
 Results were reported for each of the 420 combinations. After completion, the input features and other variables (such as the length of time the results were testing) were adjusted, and the process was run to loop through and test the 420 combinations again with the adjustments. This entire process was repeated numerous times, and results were recorded. Any accuracy results over 70% for these first rounds of testing were noted.
 
-At this point, it became clear that combinations containing the 'VIX' and 'VIX3M' closing values were generally returning the highest results. The outcomes were testing for a Boolean 'yes/no' positive result. They were highest when joined with the S&P 500 results, and a timeframe of one year was especially promising. Therefore, testing the S&P 500 results with the VIX and VIX3M closing values became the inputs for the next step, Model 2.
+At this point, it became clear that combinations containing the 'VIX' and 'VIX3M' closing values were generally returning the highest results. The outcomes were tested for a Boolean 'yes/no' positive result. They were highest when joined with the S&P 500 results, and a timeframe of one year was especially promising. Therefore, testing the S&P 500 results with the VIX and VIX3M closing values became the inputs for the next step, Model 2.
 
 ### Model 2:
 ### Optimizing the Neural Network Model
 
-The results from the first model narrowed down the search, and so they were fed into a second model to optimize the testing, while plots were used to verify the data distribution.
+The results from the first model narrowed down the search, and so they were fed into a second model to optimize the testing, while plots were also used to verify the data distribution.
 
 Now that the 'VIX' and 'VIX3M' closing values were identified as inputs, they could be fed into another neural network model in Google Colaboratory that auto-optimized the variables. 'yahoo! Finance' data was again retrieved via the yahoo-fin API, and then was cleaned and merged into a pandas dataframe.
 
-With the S&P 500's one-year return as the tested result as a Boolean 'yes/no' value, the two Vix symbols were scaled with MinMaxScaler instead (because all values were above zero). KerasTuner was used to auto-optimize the data. The activation was with ReLU (because of positive values), between 1-10 hidden layers, 5-200 nodes, and 5-20 epochs.
+With the S&P 500's one-year return as the tested output result as a Boolean 'yes/no' value, the two Vix symbols were scaled with MinMaxScaler instead (because all values were above zero). KerasTuner was used to auto-optimize the data. The activation was with ReLU (because of positive values), between 1-10 hidden layers, 5-200 nodes, and 5-20 epochs.
 
 The optimal results determined by the KerasTuner optimizer were fed into the neural network with 8 hidden layers, nodes ranging from 35-200, and 20 epochs. An accuracy of 77.4% was returned.
 
 A pandas plot chart and a seaborn plot with linear regression showed a very clear and pronounced upward-sloping trajectory of data points. This meant that higher VIX and VIX3M values translated into higher returns of the S&P 500 one year in the future. The plot charts also made it clear that there were very few negative results as the Vix values increased. The 'VIX' symbol specifically looked stronger than 'VIX3M' on the charts.
+
 ![vix_vix3m_sp500.jpg](./static/images/vix_vix3m_sp500.jpg)
 ![vix_seaborn.jpg](./static/images/vix_seaborn.jpg)
 
