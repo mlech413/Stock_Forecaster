@@ -2,6 +2,8 @@
 
 This website is hosted at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
+Past performance may not be indicative of future results. The information on this site is provided for discussion purposes and should not be misconstrued as investment advice. There is no assurance that the future performance of any investment, strategy, or product made reference to directly or indirectly here will be profitable, equal any historical performance levels, or be suitable for your portfolio
+
 
 
 ## Summary
@@ -162,8 +164,6 @@ When building the final machine model, linear and non-linear regression models w
 
 ## Conclusion
 
-It's been said many times before but is still worth saying: Past performance may not be indicative of future results. There can be no assurance that the future performance of any specific investment, investment strategy, or product made reference to directly or indirectly on this website will be profitable, equal any corresponding indicated historical performance levels, or be suitable for your portfolio.
+The historical average of the Vix is just north of 20 but values of the Vix from 2000 - 2023 show long periods of relative calm interrupted by spikes in volatility. Historically, the models demonstrate that significant VIX spikes above 35, and especially above 50, are signals that the S&P 500 has been higher one-year from that point. The most prominent examples are when the Vix is above 35, which has resulted in a positive return frequency of 92.5%. A Vix over 50 has a smaller sample size but a higher positive frequency of 98.6%.
 
-That said, the historical average of the Vix is just north of 20 but values of the Vix going back to 2000 show long periods of relative calm interrupted by spikes in volatility. Historically, the model indicates that significant spikes are signals that the S&P 500 will likely be higher one-year from that point.
-
-The testing results indicate a strong correlation between elevated Vix levels and a positive one-year future returns from the S&P 500. For potential investors, a time to consider investing for a one-year period in the S&P 500 could be when the Vix is above 35 which has resulted in a positive return frequency of 92.5%. A Vix over 50 has a smaller sample size but a higher positive frequency of 98.6%.
+Past performance may not be indicative of future results. The information on this site is provided for discussion purposes and should not be misconstrued as investment advice. There is no assurance that the future performance of any investment, strategy, or product made reference to directly or indirectly here will be profitable, equal any historical performance levels, or be suitable for your portfolio.
