@@ -83,8 +83,7 @@ The results were measured for two securities:
 
 ## Process
 
-### Model 1:  
-### Looping a Neural Network Model to Find the Best Candidates
+### Model 1: Looping a Neural Network to Find the Best Candidates
 
 The first model consisted of a neural network run in Google Colaboratory. A list of 21 market ticker symbols were read into the code, and a loop determined each unique pair. That resulted in 210 unique pairs. For each pair, there were two different outut securities that were tested against for successful results. This resulted in 420 unique combinations to test with each run of the model.
 
@@ -94,8 +93,7 @@ Results were recorded for the 420 combinations, the input features and other var
 
 Combinations containing the 'VIX' and 'VIX3M' closing values were generally returning the highest results. The S&P 500 outcomes were tested with a Boolean 'yes/no' positive result and wthe S&P 500 was determined to be the best output, with a timeframe of one year. The S&P 500 output results and the VIX and VIX3M closing values became the inputs for the next step, Model 2.
 
-### Model 2:
-### Optimizing the Neural Network Model
+### Model 2: Optimizing the Neural Network
 
 The VIX, VIX3M, and S&P 500 were fed into a second model neural network model in Google Colaboratory to optimize the model, while plots were also used to verify the data distribution. Prior to testing, 'yahoo! Finance' data was again used via the yahoo-fin API, the data was cleaned in python pandas, and merged into a dataframe.
 
@@ -105,15 +103,12 @@ The optimal results determined by the KerasTuner optimizer were fed into the neu
 
 A pandas plot chart and a seaborn plot with linear regression showed a very clear upward trajectory of data points, particularly for VIX. In other words, higher VIX values translated into higher returns of the S&P 500 one year in the future. The charts also showed very few negative returns on the lower right of the chart, and a defined lower boundary for VIX.
 
-VIX and the S&P 500 were now identified as the best choice for the final step, Model 3.  
-
 ![vix_vix3m_sp500.jpg](./static/images/vix_vix3m_sp500.jpg)
 ![vix_seaborn.jpg](./static/images/vix_seaborn.jpg)
 
-Symbol 'VIX' was now identified as the best choice for the final step, Model 3.
+Symbol 'VIX' and the S&P 500 were now identified as the best choice for the final step, Model 3.  
 
-### Model 3:
-### Linear and Non-linear Regressions
+### Model 3: Linear and Non-linear Regressions
 
 With the second model confirming the VIX closing price as an input, it was then charted against the specific future results of the S&P 500 one year from that point in Jupyter Notebook.
 
@@ -128,7 +123,7 @@ SQL was run against the data to isolate the upper Vix values. The SQL results sh
 
 Queries also show that the average one-year return with the Vix over 35 is 28.2%, and the average over 50 is 32.4%. This is in contrast to the overall average annual return for the S&P 500 over the same period at 7% (without dividends).
 
-Despite the wide spread of data on the chart, the true value of the modeled data and charting is not in the coefficient of determination (only 0.03), it is unquestionably uncovering the upper range of the VIX and it's impact on the S&P 500 returns in the future. The low coefficient of determination is due to the thousands of mixed data points in the lower ranges, along with the high spread of data in the upper ranges. The upper range data, however, is overwhelmingly positive, and that is undoubtably a very important factor when evaluating potential investments.
+Despite the wide spread of data on the chart, the true value of the modeled data and charting is not in the coefficient of determination (a very modest 0.03), it is unquestionably uncovering the upper range of the VIX and it's impact on the S&P 500 returns in the future. The low coefficient of determination is due to the thousands of mixed data points in the lower ranges, along with the high spread of data in the upper ranges. The upper range data, however, is overwhelmingly positive, and that is undoubtably a very important factor when evaluating potential investments.
 
 When building the final machine model, linear and non-linear regression models were both considered. Ultimately the linear regression model was chosen because it is the more conservative of the two on this chart. The model is available be run with user-entered values at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
@@ -169,6 +164,6 @@ When building the final machine model, linear and non-linear regression models w
 
 It's been said many times before but is still worth saying: Past performance may not be indicative of future results. There can be no assurance that the future performance of any specific investment, investment strategy, or product made reference to directly or indirectly on this website will be profitable, equal any corresponding indicated historical performance levels, or be suitable for your portfolio.
 
-That said, the historical average of the Vix is just north of 20. However, values of the Vix going back to January, 2000 show long periods of relative calm interrupted by spikes in volatility. Historically, the model indicates that significant spikes are signals that the S&P 500 will likely be higher one-year from that point.
+That said, the historical average of the Vix is just north of 20 but values of the Vix going back to 2000 show long periods of relative calm interrupted by spikes in volatility. Historically, the model indicates that significant spikes are signals that the S&P 500 will likely be higher one-year from that point.
 
-The testing results indicate a strong correlation between elevated Vix levels and a positive one-year future returns from the S&P 500. For potential investors, a time to consider investing for a one-year period in the S&P 500 could be when the Vix is above 35, which results in a positive return frequency of 92.5%. A Vix over 50 has a smaller sample size but a higher positive frequency of 98.6%.
+The testing results indicate a strong correlation between elevated Vix levels and a positive one-year future returns from the S&P 500. For potential investors, a time to consider investing for a one-year period in the S&P 500 could be when the Vix is above 35 which has resulted in a positive return frequency of 92.5%. A Vix over 50 has a smaller sample size but a higher positive frequency of 98.6%.
