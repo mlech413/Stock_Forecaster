@@ -1,4 +1,5 @@
-# STOCK MARKET PREDICTOR: Using the Vix to Predict S&P 500 Future Returns
+# STOCK MARKET PREDICTOR: <br/> Using the Volatility Index to Predict S&P 500 Future Returns
+
 This website is hosted at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
 
