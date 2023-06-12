@@ -128,7 +128,7 @@ Queries also show that the average one-year return with the Vix over 35 is 28.2%
 
 Despite the wide spread of data on the chart, the true value of the modeled data and charting is not in the coefficient of determination (only 0.03), it is unquestionably uncovering the upper range of the VIX and its impact on the S&P 500 returns in the future. The low coefficient of determination is due to the thousands of mixed data points in the lower ranges, along with the high spread of data in the upper ranges. The upper range data, however, is overwhelmingly positive, and that is undoubtably a more important factor.
 
-The far more important (and potentially useful) values are regarding the Vix closing values over of 35 which yielded success 92.5% of the time, and the Vix above 50 which had a 98.6% success rate.
+The far more important (and potentially useful) values were the discovery that Vix closing values over 35 yielded success 92.5% of the time, and Vix above 50 yielded a 98.6% success rate.
 
 When building the final machine model, linear and non-linear regression models were both considered. Ultimately the linear regression model was chosen because it is the more conservative of the two on this chart. The final model was built and exported with Python Pickle, and is is available be run against user-entered values at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
