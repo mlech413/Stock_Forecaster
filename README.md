@@ -12,7 +12,7 @@ The Vix is the popular name for the Chicago Board Options Exchange's Volatility 
 
 The S&P 500 is the Standard and Poor's 500 index - a stock market index tracking the stock performance of 500 of the largest companies listed on stock exchanges in the United States. It is one of the most commonly followed equity indices, and is the index frequently referred to as "the market".
 
-Three machine learning models used together have uncovered and demonstrated an interesting use for the Vix: elevated levels of the Vix can be used as a possible predictor of a positive result for the S&P 500 index one year into the future. When the Vix rises above 35, and especially above 50, the historical return on the S&P 500 is typically up strongly from that point over the following year.
+Three machine learning models used together have uncovered and demonstrated an interesting use for the Vix: elevated levels of the Vix can be used as a possible predictor of a positive result for the S&P 500 index one year into the future. When the Vix rises above 35, and especially above 50, the historical return on the S&P 500 is typically positive one year later.
 
 The process and results are also presented at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
@@ -35,7 +35,7 @@ Each plotted point represents one day. The one-year gain/loss of the S&P 500 is 
 
 Flask application 'app.py' contains 3 routes:
 * / (home) renders index.html, for the initial load
-* predict also renders index.html, but modified for returning user entered modelling results
+* predict also renders index.html, but modified for returning user entered modeling results
 * models renders models.html, for a more detailed description of processes
 
 templates/index.html for the main web page
