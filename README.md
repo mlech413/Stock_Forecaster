@@ -1,4 +1,4 @@
-# STOCK MARKET PREDICTOR: <br/> Using the Volatility Index to Predict S&P 500 Future Returns
+# STOCK MARKET PREDICTOR: <br/> Using the Volatility Index to Predict S&P 500 Returns
 
 This website is hosted at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
@@ -115,19 +115,20 @@ Symbol 'VIX' was now identified as the best choice for the final step, Model 3.
 ### Model 3:
 ### Linear and Non-linear Regressions
 
-With the second model confirming the VIX closing price as an input, it was then charted against the specific future results of the S&P 500 one year from that point in Jupyter Noebook.
+With the second model confirming the VIX closing price as an input, it was then charted against the specific future results of the S&P 500 one year from that point in Jupyter Notebook.
 
 A Seaborn plot chart was created, along with a Matplotlib chart. Linear and non-linear regression lines were added, as well as a dividing line at zero percent with green/red plot formatting to more clearly identify positive/negative results.
 
 ![vix_expanded_seaborn.jpg](./static/images/vix_expanded_seaborn.jpg)
 ![vix_sp500_regressions.jpg](./static/images/vix_sp500_regressions.jpg)
 
-
 SQL was run against the data to isolate the upper Vix values. The SQL results showed that beyond a Vix closing value of 35, 283 of 309 of the one-year returns (92.5%) were positive. Above a Vix value of 50, a positive return occurred 73 of 74 times (98.6%).
 
 ![model3_sql.jpg](./static/images/model3_sql.jpg)
 
 Queries also show that the average one-year return with the Vix over 35 is 28.2%, and the average over 50 is 32.4%. This is in contrast to the overall average annual return for the S&P 500 over the same period at 7% (without dividends).
+
+Despite the wide spread of data on the chart, the true value of the modeled data and charting is not in the coefficient of determination (only 0.03), it is unquestionably uncovering the upper range of the VIX and it's impact on the S&P 500 returns in the future. The low coefficient of determination is due to the thousands of mixed data points in the lower ranges, along with the high spread of data in the upper ranges. The upper range data, however, is overwhelmingly positive, and that is undoubtably a very important factor when evaluating potential investments.
 
 When building the final machine model, linear and non-linear regression models were both considered. Ultimately the linear regression model was chosen because it is the more conservative of the two on this chart. The model is available be run with user-entered values at [stock-forecaster.herokuapp.com](https://stock-forecaster.herokuapp.com/).
 
