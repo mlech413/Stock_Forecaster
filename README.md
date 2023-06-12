@@ -113,7 +113,7 @@ Symbol 'VIX' and the S&P 500 were now identified as the best choice for the fina
 
 ### Model 3: Linear and Non-linear Regressions
 
-With the second model confirming the VIX closing price as an input, it was then charted against the specific future results of the S&P 500 one year from that point in Jupyter Notebook.
+After acheiving 77.4% with the neural network model, and confirmmation of the VIX closing price as an input, the VIX was then charted against the specific future results of the S&P 500 one year from that point in Jupyter Notebook.
 
 A Seaborn plot chart was created, along with a Matplotlib chart. Linear and non-linear regression lines were added, as well as a dividing line at zero percent with green/red plot formatting to more clearly identify positive/negative results.
 
