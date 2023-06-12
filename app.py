@@ -1,9 +1,6 @@
-# API of ML model using flask
+# API of ML model using Flask
 
-'''
-This code takes the JSON data while POST request an performs the prediction using loaded model and returns
-the results in JSON format.
-'''
+# This code takes API data while POST request an performs the prediction using loaded model and returns the results.
 
 # Import libraries
 from flask import Flask, request, render_template 
@@ -12,11 +9,12 @@ import numpy as np
 import pickle
 
 app = Flask(__name__)
-# port = int(os.getenv('PORT'))
 
 # Load the model
 model = pickle.load(open('./model.pkl','rb'))
 
+
+# Home route
 @app.route('/',methods=['GET'])
 def home():
     print("HOME")
@@ -42,6 +40,7 @@ def home():
     return render_template("index.html", prediction_based_on_last_close=prediction_based_on_last_close, user_entered_index_value=user_entered_index_value, vix_info=vix_info, sp500_info=sp500_info)
 
 
+# Predict route
 @app.route('/predict',methods=['GET', 'POST'])
 def predict():
     print("PREDICT")
@@ -80,37 +79,12 @@ def predict():
         # return render_template("index.html", model_output=model_output, vix_close=vix_close)
         return render_template("index.html", prediction_based_on_last_close=prediction_based_on_last_close, user_entered_index_value=data, user_model_output=user_model_output, vix_info=vix_info, sp500_info=sp500_info )
 
+
+# Models route
 @app.route('/models',methods=['GET', 'POST'])
 def models():
     print("MODELS route")
     return render_template("models.html")
-
-    
-
-# @app.route("/quote")
-# def display_quote():
-
-#     symbol = request.args.get('symbol', default="^VIX")
-
-#     quote = yf.Ticker(symbol)
-#     print(quote.info['regularMarketPreviousClose'])
-#     return quote.info
-
-
-# @app.route("/history")
-# def display_history():
-
-#     symbol = request.args.get('symbol', default="^VIX")
-#     period = request.args.get('period', default="1y")
-#     interval = request.args.get('interval', default="1d")        
-#     quote = yf.Ticker(symbol)   
-#     hist = quote.history(period=period, interval=interval)["Close"]
-#     # hist = quote.history(period=period, interval=interval)
-#     for i in hist:
-#         print(i)
-#     # datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
-#     data = hist.to_json()
-#     return data
 
 
 if __name__ == '__main__':
